@@ -44,7 +44,7 @@ Player::Player() {
   setFriction(0.0f);
   setAngularFactor(glm::vec3(0.0f));
   setActivationState(DISABLE_DEACTIVATION);
-  refresh();
+  Update();
 
   Game::window->setInputMode(GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 

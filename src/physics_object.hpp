@@ -26,7 +26,7 @@ public:
   glm::vec3 localInertia() const;
   void setMassProps(float, glm::vec3);
 
-  void refresh();
+  void Update();
 
   int activationState() const;
   void setActivationState(int);

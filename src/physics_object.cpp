@@ -66,7 +66,7 @@ void PhysicsObject::setMassProps(float mass, glm::vec3 localInertia) {
   m_rigidBody->setMassProps(mass, localInertiaBullet);
 }
 
-void PhysicsObject::refresh() {
+void PhysicsObject::Update() {
   Game::dynamicsWorld->removeRigidBody(m_rigidBody);
   Game::dynamicsWorld->addRigidBody(m_rigidBody);
 }

@@ -187,7 +187,7 @@ namespace MeshLoader {
     }
 
     out->setCollisionShape(compoundShape);
-    out->refresh();
+    out->Update();
 
     return out;
   }
