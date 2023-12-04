@@ -1,8 +1,5 @@
-experimental c++ game. no updates planned
+Experimental c++ game. no updates planned, some dependencies are not used and need to be removed.
 
-the code may be cringe because i didn't originally plan to publish it
-
-some dependencies are not used xd
 
 ## building
 Fedora linux:
