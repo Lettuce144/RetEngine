@@ -1,5 +1,6 @@
 Experimental c++ game. no updates planned, some dependencies are not used and need to be removed.
 
+C++ Version: C++17 MCVS2022
 
 ## building
 Fedora linux:
