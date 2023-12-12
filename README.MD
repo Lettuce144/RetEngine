@@ -4,15 +4,11 @@ C++ Version: C++20
 Compiler: MCVS2022
 
 ## Dependencies
-GLFW
-ImGui (Docking branch)
-ImGuiFileDialog
-BulletPhysicsEngine
-stb_image
-
-
-
-# SUPPORT FOR LINUX COMING SOON
+* GLFW
+* ImGui (Docking branch)
+* ImGuiFileDialog
+* BulletPhysicsEngine
+* stb_image
 
 ## building
 Windows:
