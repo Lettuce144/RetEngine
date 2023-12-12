@@ -1,10 +1,24 @@
-Experimental c++ game. no updates planned, some dependencies are not used and need to be removed.
+Experimental c++ game engine. Note: some dependencies are not used and need to be removed.
 
-C++ Version: C++20 MCVS2022
+C++ Version: C++20 
+Compiler: MCVS2022
+
+## Dependencies
+GLFW
+ImGui (Docking branch)
+ImGuiFileDialog
+BulletPhysicsEngine
+stb_image
+
+
+
+# SUPPORT FOR LINUX COMING SOON
 
 ## building
-Fedora linux:
+Windows:
 ```
-sudo dnf install gcc-c++ make libglvnd-devel glfw-devel glew-devel freetype-devel stb-devel openal-soft-devel mingw32-gcc-c++
-make
+Open the RetEngine.sln file and build in Release for x86(This is not old, but a feature ;))
+Expect a move to cmake soon
 ```
+
+SUPPORT FOR LINUX COMING SOON:
