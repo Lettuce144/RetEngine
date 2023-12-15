@@ -1,9 +1,12 @@
+#include "imgui\imgui.h"
+#include "imgui\imgui_impl_glfw.h"
+#include "imgui\imgui_impl_opengl3.h"
+
 #include <iostream>
 #include <thread>
 #include <chrono>
 
 #include "gl.hpp"
-#include "imgui.h"
 #include "window.hpp"
 #include "game.hpp"
 
@@ -51,10 +54,27 @@ int main(int argc, char *argv[]) {
 
   Game::start();
 
+  IMGUI_CHECKVERSION();
+  ImGui::CreateContext();
+  ImGuiIO& io = ImGui::GetIO(); (void)io;
+  io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
+  //io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable; 
+  ImGui::StyleColorsDark();
+  ImGui_ImplGlfw_InitForOpenGL(Game::window->glfw(), true);
+  ImGui_ImplOpenGL3_Init("#version 330");
+
   while (Game::window->isOpen()) {
     glfwPollEvents();
 
     glViewport(0, 0, wWidth, wHeight);
+
+    //Imgui:
+    ImGui_ImplOpenGL3_NewFrame();
+    ImGui_ImplGlfw_NewFrame();
+    ImGui::NewFrame();
+
+
+    ImGui::ShowDemoWindow();
 
     glClearColor(Game::clearColor.r, Game::clearColor.g, Game::clearColor.b,
                  Game::clearColor.a);
@@ -63,8 +83,17 @@ int main(int argc, char *argv[]) {
     Game::update();
     Game::rootNode.draw();
 
+    //Draw this above everything else
+    ImGui::Render();
+    ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
     Game::window->swapBuffers();
   }
+
+
+  ImGui_ImplOpenGL3_Shutdown();
+  ImGui_ImplGlfw_Shutdown();
+  ImGui::DestroyContext();
 
   Game::end();
 
