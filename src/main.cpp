@@ -3,11 +3,12 @@
 #include <chrono>
 
 #include "gl.hpp"
+#include "imgui.h"
 #include "window.hpp"
 #include "game.hpp"
 
-#define WND_WIDTH 1200
-#define WND_HEIGHT 900
+#define WND_WIDTH 1280
+#define WND_HEIGHT 800
 #define WND_TITLE "game"
 #define WND_MONITOR glfwGetPrimaryMonitor()
 

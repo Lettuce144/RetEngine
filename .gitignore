@@ -4,6 +4,10 @@ bin/**
 #Visual studio files
 .vs/
 
+#Cmake and vcpkg
+vcpkg_installed/
+build/
+
 # Visual C++ cache files
 ipch/
 *.aps
