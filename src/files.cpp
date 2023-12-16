@@ -38,44 +38,60 @@ namespace Files {
 
   std::string readFile(std::filesystem::path path) {
 #ifdef __WIN32__
-    FILE *f = _wfopen(path.wstring().c_str(), L"r");
-    std::string content { "" };
-    char tmpChar;
+      FILE* f;
+      errno_t err = _wfopen_s(&f, path.wstring().c_str(), L"r");
+      if (err != 0) {
+          // Handle error
+          return "";
+      }
+      std::string content { "" };
+      char tmpChar;
 
-    while ((tmpChar = fgetc(f)) != EOF)
-      content += tmpChar;
+      while ((tmpChar = fgetc(f)) != EOF)
+          content += tmpChar;
 
-    fclose(f);
-    return content;
+      fclose(f);
+      return content;
 #else
-    std::ifstream ifs(path);
-    std::stringstream ss;
+      std::ifstream ifs(path);
+      std::stringstream ss;
 
-    ss << ifs.rdbuf();
-    ifs.close();
+      ss << ifs.rdbuf();
+      ifs.close();
 
-    return ss.str();
+      return ss.str();
 #endif // __WIN32__
   }
+
 
   std::string readDataFile(std::filesystem::path path) {
     return readFile(dataDir()/path);
   }
 
   std::vector<unsigned char> readBinaryFile(std::filesystem::path path) {
+      FILE* f;
 #ifdef __WIN32__
-    FILE *f = _wfopen(path.wstring().c_str(), L"rb");
-#else
-    FILE *f = fopen(path.c_str(), "rb");
-#endif // __WIN32__
-    std::vector<unsigned char> content {};
-    int tmpChar;
-
-    while ((tmpChar = fgetc(f)) != EOF)
-      content.push_back((unsigned char) tmpChar);
-
-    fclose(f);
-    return content;
+      errno_t err = _wfopen_s(&f, path.wstring().c_str(), L"rb");
+      if (err != 0) {
+          // Handle error
+          return {};
   }
+#else
+      f = fopen(path.c_str(), "rb");
+      if (f == nullptr) {
+          // Handle error
+          return {};
+      }
+#endif // __WIN32__
+      std::vector<unsigned char> content {};
+      int tmpChar;
+
+      while ((tmpChar = fgetc(f)) != EOF)
+          content.push_back((unsigned char)tmpChar);
+
+      fclose(f);
+      return content;
+}
+
 
 } // namespace Files

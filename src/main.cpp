@@ -1,6 +1,7 @@
-#include "imgui\imgui.h"
-#include "imgui\imgui_impl_glfw.h"
-#include "imgui\imgui_impl_opengl3.h"
+#include "imgui.h"
+#include "imgui_impl_glfw.h"
+#include "imgui_impl_opengl3.h"
+#include "ImGuiFileDialog.h"
 
 #include <iostream>
 #include <thread>
@@ -9,6 +10,7 @@
 #include "gl.hpp"
 #include "window.hpp"
 #include "game.hpp"
+#include "Framebuffer.h"
 
 #define WND_WIDTH 1280
 #define WND_HEIGHT 800
@@ -17,88 +19,144 @@
 
 #define PSEUDO_NOSTALGIC_LOADING_DURATION 0000
 
-int main(int argc, char *argv[]) {
-  if (!glfwInit()) {
-    std::cerr << "failed to init glfw" << std::endl;
-    exit(1);
-  }
-
-  const GLFWvidmode *videoMode = glfwGetVideoMode(WND_MONITOR);
-
-  int wWidth = videoMode->width;
-  int wHeight = videoMode->height;
-  GLFWmonitor *wMonitor = WND_MONITOR;
-
-  for (int i = 1; i < argc; i++) {
-    std::string arg = argv[i];
-
-    if (arg == "-w" || arg == "--windowed") {
-      wWidth = WND_WIDTH;
-      wHeight = WND_HEIGHT;
-      wMonitor = nullptr;
-    }
-  }
-
-  Game::window = new Window(wWidth, wHeight, WND_TITLE, wMonitor);
-  Game::window->makeCurrent();
-  Game::window->inputCallback = Game::input;
-
-  unsigned int sleepFor = PSEUDO_NOSTALGIC_LOADING_DURATION;
-  std::this_thread::sleep_for(std::chrono::milliseconds(sleepFor));
-
-  glEnable(GL_DEPTH_TEST);
-  glEnable(GL_TEXTURE_2D);
-  glEnable(GL_BLEND);
-
-  glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-  Game::start();
-
-  IMGUI_CHECKVERSION();
-  ImGui::CreateContext();
-  ImGuiIO& io = ImGui::GetIO(); (void)io;
-  io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
-  //io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable; 
-  ImGui::StyleColorsDark();
-  ImGui_ImplGlfw_InitForOpenGL(Game::window->glfw(), true);
-  ImGui_ImplOpenGL3_Init("#version 330");
-
-  while (Game::window->isOpen()) {
-    glfwPollEvents();
-
-    glViewport(0, 0, wWidth, wHeight);
-
-    //Imgui:
-    ImGui_ImplOpenGL3_NewFrame();
-    ImGui_ImplGlfw_NewFrame();
-    ImGui::NewFrame();
 
 
-    ImGui::ShowDemoWindow();
+int main(int argc, char* argv[]) {
+	if (!glfwInit()) {
+		std::cerr << "failed to init glfw" << std::endl;
+		exit(1);
+	}
 
-    glClearColor(Game::clearColor.r, Game::clearColor.g, Game::clearColor.b,
-                 Game::clearColor.a);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	const GLFWvidmode* videoMode = glfwGetVideoMode(WND_MONITOR);
 
-    Game::update();
-    Game::rootNode.draw();
+	int wWidth = videoMode->width;
+	int wHeight = videoMode->height;
+	GLFWmonitor* wMonitor = WND_MONITOR;
 
-    //Draw this above everything else
-    ImGui::Render();
-    ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+	for (int i = 1; i < argc; i++) {
+		std::string arg = argv[i];
 
-    Game::window->swapBuffers();
-  }
+		if (arg == "-w" || arg == "--windowed") {
+			wWidth = WND_WIDTH;
+			wHeight = WND_HEIGHT;
+			wMonitor = nullptr;
+		}
+	}
+
+	Game::window = new Window(wWidth, wHeight, WND_TITLE, wMonitor);
+	Game::window->makeCurrent();
+	Game::window->inputCallback = Game::input;
+
+	FrameBuffer* buffer = new FrameBuffer(wWidth, wHeight);
+
+	unsigned int sleepFor = PSEUDO_NOSTALGIC_LOADING_DURATION;
+	std::this_thread::sleep_for(std::chrono::milliseconds(sleepFor));
+
+	if (glCheckFramebufferStatus(GL_FRAMEBUFFER) == GL_FRAMEBUFFER_COMPLETE)
+		std::cout << "Framebuffer is complete" << std::endl;
+
+	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_TEXTURE_2D);
+	glEnable(GL_BLEND);
+
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+	Game::start();
+
+	IMGUI_CHECKVERSION();
+	ImGui::CreateContext();
+	ImGuiIO& io = ImGui::GetIO(); (void)io;
+	io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
+	//io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable; 
+	ImGui::StyleColorsDark();
+	ImGui_ImplGlfw_InitForOpenGL(Game::window->glfw(), true);
+	ImGui_ImplOpenGL3_Init("#version 330");
+
+	while (Game::window->isOpen()) {
+		glfwPollEvents();
+
+		// Update window size and aspect ratio
+		int newWidth, newHeight;
+		glfwGetFramebufferSize(Game::window->glfw(), &newWidth, &newHeight);
+		float aspectRatio = static_cast<float>(newWidth) / static_cast<float>(newHeight);
+
+		buffer->RescaleFrameBuffer(newWidth, newHeight);
+
+		glViewport(0, 0, newWidth, newHeight);
+
+		//Imgui:
+		ImGui_ImplOpenGL3_NewFrame();
+		ImGui_ImplGlfw_NewFrame();
+		ImGui::NewFrame();
+		ImGui::DockSpaceOverViewport();
+
+		// open Dialog Simple
+		if (ImGui::Button("Open new model"))
+			ImGuiFileDialog::Instance()->OpenDialog("ChooseFileDlgKey", "Choose File", ".obj,", ".");
+
+		// display
+		if (ImGuiFileDialog::Instance()->Display("ChooseFileDlgKey"))
+		{
+			// action if OK
+			if (ImGuiFileDialog::Instance()->IsOk())
+			{
+				std::string modelName = ImGuiFileDialog::Instance()->GetCurrentFileName();
+				Game::spawnObj(modelName);
+			}
+
+			// close
+			ImGuiFileDialog::Instance()->Close();
+		}
+
+		ImGui::ShowDemoWindow();
+
+		ImGui::Begin("GameWindow");
+		{
+			// Using a Child allow to fill all the space of the window.
+			// It also allows for customization
+			ImGui::BeginChild("GameRender");
+			// Get the size of the child (i.e. the whole draw size of the windows).
+			ImVec2 wsize = ImGui::GetWindowSize();
+			// Because I use the texture from OpenGL, I need to invert the V from the UV.
+			ImGui::Image((ImTextureID)buffer->getFrameTexture(), wsize, ImVec2(0, 1), ImVec2(1, 0));
+			ImGui::EndChild();
+		}
+		ImGui::End();
+		
+
+		//Start with capturing the scene here
+		buffer->Bind();
+		//-------------------------------
+
+		glClearColor(Game::clearColor.r, Game::clearColor.g, Game::clearColor.b,
+			Game::clearColor.a);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 
-  ImGui_ImplOpenGL3_Shutdown();
-  ImGui_ImplGlfw_Shutdown();
-  ImGui::DestroyContext();
+		Game::update();
+		Game::rootNode.draw();
 
-  Game::end();
+		//-------------------------------
+		//And close the framebuffer here
+		buffer->Unbind();
 
-  delete Game::window;
-  glfwTerminate();
+		//Draw this above everything else
+		ImGui::Render();
+		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
-  return 0;
+		Game::window->swapBuffers();
+	}
+
+	ImGui_ImplOpenGL3_Shutdown();
+	ImGui_ImplGlfw_Shutdown();
+	ImGui::DestroyContext();
+
+	buffer->~FrameBuffer();
+	Game::end();
+
+	delete Game::window;
+	glfwTerminate();
+
+	return 0;
 }
+

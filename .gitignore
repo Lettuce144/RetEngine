@@ -8,6 +8,8 @@ bin/**
 vcpkg_installed/
 build/
 
+Docs/
+
 # Visual C++ cache files
 ipch/
 *.aps

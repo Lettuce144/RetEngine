@@ -16,6 +16,9 @@ public:
   ~Camera();
 
   glm::mat4 proj();
+  glm::mat4 cameraMatrix = glm::mat4(1.0f);
+
+  //void Matrix(Shader &shader, const char *uniform);
 
 };
 

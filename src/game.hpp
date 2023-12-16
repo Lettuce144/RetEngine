@@ -23,7 +23,11 @@ namespace Game {
   void start();
   void update();
   void end();
+  double deltaTime();
+  void spawnObj(std::string File);
   void input(InputEvent*);
+
+
 
 } // namespace Game
 

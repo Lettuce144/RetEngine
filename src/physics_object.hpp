@@ -10,6 +10,7 @@ class PhysicsObject : public MeshInstance {
 
 public:
   float slopeMaxNormalY = 0.4f;
+  
 
   PhysicsObject();
   virtual ~PhysicsObject();
@@ -39,6 +40,10 @@ public:
 
   btTransform worldTransform() const;
   void setWorldTransform(btTransform);
+
+  void enableAngularMotion();
+
+  void setInertiaTensor();
 
   glm::vec3 origin() const;
   void setOrigin(glm::vec3);

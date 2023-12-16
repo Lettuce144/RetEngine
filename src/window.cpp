@@ -6,6 +6,8 @@
 
 #include "gl.hpp"
 #include "input_events.hpp"
+#include "imgui.h"
+#include "texture.hpp"
 
 Window::Window(int width, int height, const char *title,
                GLFWmonitor *monitor) {
@@ -52,18 +54,21 @@ Window::Window(int width, int height, const char *title,
   glfwSetCursorPosCallback(m_glfw, [](GLFWwindow *glfw, double x, double y) {
     Window *wnd = static_cast<Window*>(glfwGetWindowUserPointer(glfw));
 
-    static glm::vec2 prevPos { -1.0f, -1.0f };
+    
 
-    glm::vec2 curPos { x, y };
-    glm::vec2 relPos { 0.0f, 0.0f };
+        static glm::vec2 prevPos { -1.0f, -1.0f };
 
-    if (prevPos != glm::vec2(-1.0f, -1.0f))
-      relPos = curPos - prevPos;
+        glm::vec2 curPos { x, y };
+        glm::vec2 relPos { 0.0f, 0.0f };
 
-    prevPos = curPos;
+        if (prevPos != glm::vec2(-1.0f, -1.0f))
+            relPos = curPos - prevPos;
 
-    if (wnd->inputCallback)
-      wnd->inputCallback(new InputEventCursorPos(curPos, relPos));
+        prevPos = curPos;
+
+        if (wnd->inputCallback)
+            wnd->inputCallback(new InputEventCursorPos(curPos, relPos));
+    
   });
 
   glfwSetMouseButtonCallback(m_glfw, [](GLFWwindow *glfw, int button,
@@ -97,6 +102,12 @@ void Window::swapBuffers() const {
   glfwSwapBuffers(m_glfw);
 }
 
+//void Window::window_size_callback(FrameBuffer* buffer, int width, int height)
+//{
+//    glViewport(0, 0, width, height);
+//	buffer->RescaleFrameBuffer(width, height);
+//}
+
 bool Window::isOpen() const {
   return !glfwWindowShouldClose(m_glfw);
 }
@@ -108,6 +119,7 @@ void Window::close() const {
 void Window::destroy() const {
   glfwDestroyWindow(m_glfw);
 }
+
 
 glm::ivec2 Window::size() const {
   int width, height;
@@ -129,6 +141,33 @@ int Window::inputMode(int mode) const {
 
 void Window::setInputMode(int mode, int value) const {
   glfwSetInputMode(m_glfw, mode, value);
+}
+
+/// <summary>
+/// Is a toggle for the cursor lock.
+/// in player.cpp "setInputMode(GLFW_CURSOR, GLFW_CURSOR_DISABLED);" is called so we will be in unfocus first
+/// </summary>
+void Window::UnlockCursor() 
+{
+    if (inputMode(GLFW_CURSOR) == GLFW_CURSOR_DISABLED)
+    {
+        setInputMode( GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+        ImGui::SetWindowFocus();
+
+        m_bisFocused = true;
+
+    }
+    else
+    {
+        setInputMode(GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+        ImGui::SetWindowFocus(nullptr);
+
+        m_bisFocused = false;
+    }   
+}
+
+bool Window::IsFocused() {
+    return m_bisFocused;
 }
 
 bool Window::isKeyPressed(int key) const {

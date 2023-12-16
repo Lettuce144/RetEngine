@@ -36,7 +36,7 @@ void Node::addChild(Node *child) {
 }
 
 void Node::removeChild(Node *child) {
-  child->reparent(nullptr);
+    delete child;
 }
 
 glm::mat4 Node::trans() const {
@@ -77,7 +77,14 @@ glm::mat4 Node::view() const {
 
 void Node::draw() {
   for (auto child : m_children)
-    child->draw();
+      if (child != nullptr)
+      {
+          child->draw();
+      }
+      else
+      {
+          removeChild(child);
+      }
 }
 
 glm::vec3 Node::globalPos() const {

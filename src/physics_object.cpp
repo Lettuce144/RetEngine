@@ -7,13 +7,17 @@
 
 #include "game.hpp"
 
+
+/// <summary>
+/// Class for creating and managing props 
+/// </summary>
 PhysicsObject::PhysicsObject() {
   btTransform initTrans;
   initTrans.setIdentity();
 
   btEmptyShape *shape = new btEmptyShape();
   float mass = 0.0f;
-  btVector3 localInertia { 0.0f, 0.0f, 0.0f };
+  btVector3 localInertia = { 0.0f, 0.0f, 0.0f };
 
   btDefaultMotionState *motionState = new btDefaultMotionState(initTrans);
   btRigidBody::btRigidBodyConstructionInfo rbInfo(mass, motionState,
@@ -23,7 +27,8 @@ PhysicsObject::PhysicsObject() {
 }
 
 PhysicsObject::~PhysicsObject() {
-  delete m_rigidBody;
+    Game::dynamicsWorld->removeRigidBody(m_rigidBody);
+    delete m_rigidBody;
 }
 
 void PhysicsObject::draw() {
@@ -106,6 +111,18 @@ btTransform PhysicsObject::worldTransform() const {
 
 void PhysicsObject::setWorldTransform(btTransform value) {
   m_rigidBody->setWorldTransform(value);
+}
+
+void PhysicsObject::enableAngularMotion() {
+    m_rigidBody->setAngularFactor({ 1.0f, 1.0f, 1.0f });
+}
+
+void PhysicsObject::setInertiaTensor() {
+    btVector3 localInertia(0, 0, 0);
+
+    // Calculate local inertia based on the collision shape and mass
+    m_rigidBody->getCollisionShape()->calculateLocalInertia(mass(), localInertia);
+    m_rigidBody->setMassProps(mass(), localInertia);
 }
 
 glm::vec3 PhysicsObject::origin() const {

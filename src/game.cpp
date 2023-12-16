@@ -10,6 +10,9 @@
 #include "input_events.hpp"
 #include "setup_dynamics_world.hpp"
 #include "animator.hpp"
+#include "obj_loader.hpp"
+#include "files.hpp"
+#include <iostream>
 
 namespace Game {
 
@@ -24,19 +27,61 @@ namespace Game {
 
   void start() {
     SetupDynamicsWorld::setup();
+    //Creates world
     GenWorld::all();
 
     player = new Player();
     rootNode.addChild(player);
   }
 
+  PhysicsObject* previousObj = nullptr;
+
+  /// <summary>
+  /// Call to change the object in the middle of the world
+  /// </summary>
+  /// <param name="File"></param>
+  void spawnObj(std::string File)
+  {
+      // Check if there was an previous object, if so remove it
+      if (previousObj != nullptr)
+      {
+          previousObj->~PhysicsObject();
+          rootNode.removeChild(previousObj);
+      }
+
+      PhysicsObject* objThing = ObjLoader::load(Files::dataDir() / File);
+      objThing->setOrigin({ 0.0f, 3.0f, 0.0f });
+      objThing->mesh->shader =
+          new Shader(Files::readFile(Files::dataDir() / "shader.vert"),
+              Files::readFile(Files::dataDir() / "shader.frag"));
+      objThing->texture = new Texture();
+      objThing->texture->load(Files::dataDir() / "crate.jpg", 3, GL_RGB);
+      rootNode.addChild(objThing);
+
+      previousObj = objThing;
+  }
+
   void update() {
-    dynamicsWorld->stepSimulation(1.0f / 60.0f);
+    dynamicsWorld->stepSimulation(deltaTime());
     Animator::step();
   }
 
   void end() {
 
+  }
+
+  float m_fllastTick = 0.0f;
+  float m_fldeltaTime = 0.0f;
+
+  /// <summary>
+  /// TODO: move to separate class
+  /// </summary>
+  double deltaTime()
+  {
+      m_fldeltaTime = (float)glfwGetTime() - m_fllastTick;
+      m_fllastTick = (float)glfwGetTime();
+
+      return m_fldeltaTime;
   }
 
   void input(InputEvent *event) {

@@ -19,6 +19,7 @@ void MeshInstance::draw() {
 
   Camera *camera = Game::player->camera();
   mesh->shader->setUniform("u_projMat", camera->proj());
+  mesh->shader->setUniform("u_camMatrix", camera->cameraMatrix); //Lighting!
   mesh->shader->setUniform("u_viewMat", camera->view());
   mesh->shader->setUniform("u_transMat", trans());
 
