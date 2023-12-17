@@ -31,6 +31,7 @@ public:
 
 private:
   float m_animSpeedMult = 1.0f;
+  bool m_bIsInNoclip = false;
   Camera *m_camera = new Camera();
 
 };

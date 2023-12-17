@@ -41,6 +41,8 @@ public:
   btTransform worldTransform() const;
   void setWorldTransform(btTransform);
 
+  void setGravity(btVector3 gravityValue) const;
+
   void enableAngularMotion();
 
   void setInertiaTensor();

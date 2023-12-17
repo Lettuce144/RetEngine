@@ -19,6 +19,14 @@
 
 #define PSEUDO_NOSTALGIC_LOADING_DURATION 0000
 
+void DrawTree(const Node* n)
+{
+	if (ImGui::TreeNode(n->name.c_str())) {
+		for (const Node* child : n->children())
+			DrawTree(child);
+		ImGui::TreePop();
+	}
+}
 
 
 int main(int argc, char* argv[]) {
@@ -72,6 +80,7 @@ int main(int argc, char* argv[]) {
 	ImGui_ImplGlfw_InitForOpenGL(Game::window->glfw(), true);
 	ImGui_ImplOpenGL3_Init("#version 330");
 
+	PhysicsObject* obj = nullptr;
 	while (Game::window->isOpen()) {
 		glfwPollEvents();
 
@@ -90,26 +99,48 @@ int main(int argc, char* argv[]) {
 		ImGui::NewFrame();
 		ImGui::DockSpaceOverViewport();
 
-		// open Dialog Simple
-		if (ImGui::Button("Open new model"))
-			ImGuiFileDialog::Instance()->OpenDialog("ChooseFileDlgKey", "Choose File", ".obj,", ".");
+		ImGui::Begin("Model Importer");
+			// open Dialog Simple
+			if (ImGui::Button("Open new model"))
+				ImGuiFileDialog::Instance()->OpenDialog("ChooseFileDlgKey", "Choose File", ".obj,", ".");
 
-		// display
-		if (ImGuiFileDialog::Instance()->Display("ChooseFileDlgKey"))
-		{
-			// action if OK
-			if (ImGuiFileDialog::Instance()->IsOk())
+			// display
+			if (ImGuiFileDialog::Instance()->Display("ChooseFileDlgKey"))
 			{
-				std::string modelName = ImGuiFileDialog::Instance()->GetCurrentFileName();
-				Game::spawnObj(modelName);
-			}
+				// action if OK
+				if (ImGuiFileDialog::Instance()->IsOk())
+				{
+					std::string modelName = ImGuiFileDialog::Instance()->GetCurrentFileName();
+					if(obj != nullptr)
+						Game::removeObjThing();
+						obj = nullptr;
+						
+					
+					obj = Game::spawnObj(modelName);
 
-			// close
-			ImGuiFileDialog::Instance()->Close();
+				}
+
+				// close
+				ImGuiFileDialog::Instance()->Close();
+			}
+		ImGui::End();
+
+		if (obj != nullptr)
+		{
+			
+
+			ImGui::Begin("Model Transform");
+				ImGui::Text("Model Transform");
+				float x, y, z = 0.0f;
+				ImGui::SliderFloat("X", &x, -10.0f, 10.0f);
+				ImGui::SliderFloat("Y", &y, -10.0f, 10.0f);
+				ImGui::SliderFloat("Z", &z, -10.0f, 10.0f);
+
+				Game::setObjThingPos({ x, y, z });
+			ImGui::End();
 		}
 
 		ImGui::ShowDemoWindow();
-
 		ImGui::Begin("GameWindow");
 		{
 			// Using a Child allow to fill all the space of the window.
@@ -121,6 +152,11 @@ int main(int argc, char* argv[]) {
 			ImGui::Image((ImTextureID)buffer->getFrameTexture(), wsize, ImVec2(0, 1), ImVec2(1, 0));
 			ImGui::EndChild();
 		}
+		ImGui::End();
+
+		
+		ImGui::Begin("Scene Graph");
+			DrawTree(&Game::rootNode);
 		ImGui::End();
 		
 
@@ -159,4 +195,5 @@ int main(int argc, char* argv[]) {
 
 	return 0;
 }
+
 

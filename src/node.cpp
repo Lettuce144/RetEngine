@@ -32,11 +32,15 @@ bool Node::hasChild(Node *child) const {
 }
 
 void Node::addChild(Node *child) {
-  child->reparent(this);
+    //Get class name of child
+    child->name = typeid(*child).name();
+    child->reparent(this);
 }
 
 void Node::removeChild(Node *child) {
-    delete child;
+    if (child->m_parent == this) {
+        child->reparent(nullptr);
+    }
 }
 
 glm::mat4 Node::trans() const {
@@ -75,15 +79,16 @@ glm::mat4 Node::view() const {
   return out;
 }
 
+//If we can't see this child remove it!
 void Node::draw() {
   for (auto child : m_children)
-      if (child != nullptr)
+      if (child && child != nullptr)
       {
           child->draw();
       }
       else
       {
-          removeChild(child);
+          delete child;
       }
 }
 

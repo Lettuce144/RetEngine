@@ -15,7 +15,11 @@ public:
   Camera();
   ~Camera();
 
+  //Setup the projection matrix
   glm::mat4 proj();
+
+  //Returns the viewdir of the camera based of the viewmatrix
+  glm::vec3 viewDir();
   glm::mat4 cameraMatrix = glm::mat4(1.0f);
 
   //void Matrix(Shader &shader, const char *uniform);

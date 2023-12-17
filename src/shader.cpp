@@ -40,6 +40,11 @@ void Shader::unbind() {
 
 Shader::Shader() {}
 
+/// <summary>
+/// 
+/// </summary>
+/// <param name="initVertexSource">Location of the Vertex shader</param>
+/// <param name="initFragmentSource">Location of the Fragment shader</param>
 Shader::Shader(std::string initVertexSource, std::string initFragmentSource) {
   setVertexSource(initVertexSource);
   setFragmentSource(initFragmentSource);

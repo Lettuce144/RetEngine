@@ -134,3 +134,4 @@ void Player::input(InputEvent* event) {
 				});
 	}
 }
+

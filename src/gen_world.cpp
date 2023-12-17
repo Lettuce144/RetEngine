@@ -59,17 +59,6 @@ namespace GenWorld {
     Game::rootNode.addChild(MeshLoader::loadPhysicsObject(Files::dataDir()
                                                           /"hall_floor.mesh"));
 
-
-
-    //PhysicsObject *objThing = ObjLoader::load(Files::dataDir()/"thing.obj");
-    //objThing->setOrigin({ 0.0f, 3.0f, 0.0f });
-    //objThing->mesh->shader =
-    //  new Shader(Files::readFile(Files::dataDir()/"shader.vert"),
-    //             Files::readFile(Files::dataDir()/"shader.frag"));
-    //objThing->texture = new Texture();
-    //objThing->texture->load(Files::dataDir()/"crate.jpg", 3, GL_RGB);
-    //Game::rootNode.addChild(objThing);
-
     PhysicsObject *objSphere = ObjLoader::load(Files::dataDir()/"sphere.obj");
     objSphere->setOrigin({ -2.0f, 2.0f, -10.0f });
     objSphere->mesh->shader =

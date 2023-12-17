@@ -10,6 +10,7 @@ namespace Files {
   std::filesystem::path binPath();
   std::filesystem::path binDir();
   std::filesystem::path dataDir();
+  std::filesystem::path shadersDir();
 
   std::string readFile(std::filesystem::path);
   std::string readDataFile(std::filesystem::path);

@@ -8,6 +8,7 @@
 #include "node.hpp"
 #include "player.hpp"
 #include "input_events.hpp"
+#include "props/props.hpp"
 
 namespace Game {
 
@@ -20,11 +21,15 @@ namespace Game {
   extern Node rootNode;
   extern Player *player;
 
+
+
   void start();
   void update();
   void end();
   double deltaTime();
-  void spawnObj(std::string File);
+  PhysicsObject* spawnObj(std::string File);
+  void setObjThingPos(glm::vec3 pos);
+  void removeObjThing();
   void input(InputEvent*);
 
 

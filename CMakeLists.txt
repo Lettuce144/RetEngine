@@ -72,4 +72,4 @@ target_include_directories(RetEngine PRIVATE ${LIB_INCLUDE_DIRS} ${IMGUI_INCLUDE
 
 target_link_libraries(RetEngine PRIVATE ${BULLET_LIBRARIES})
 target_link_libraries(RetEngine PRIVATE glfw)
-target_link_libraries(RetEngine PRIVATE GLEW::GLEW)
+target_link_libraries(RetEngine PRIVATE GLEW::glew_s)

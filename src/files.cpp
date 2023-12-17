@@ -33,7 +33,11 @@ namespace Files {
   }
 
   std::filesystem::path dataDir() {
-    return binDir()/"data/";
+      return binDir() / "data/";
+  }
+
+  std::filesystem::path shadersDir() {
+	return dataDir()/"shaders/";
   }
 
   std::string readFile(std::filesystem::path path) {

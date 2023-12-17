@@ -21,6 +21,8 @@ namespace Game {
 
   btDiscreteDynamicsWorld *dynamicsWorld = nullptr;
   btCollisionDispatcher *collisionDispatcher = nullptr;
+  //Test
+  PhysicsObject* objThing = nullptr;
 
   Node rootNode;
   Player *player = nullptr;
@@ -30,26 +32,18 @@ namespace Game {
     //Creates world
     GenWorld::all();
 
+    spawnObj("thing.obj");
     player = new Player();
     rootNode.addChild(player);
   }
-
-  PhysicsObject* previousObj = nullptr;
 
   /// <summary>
   /// Call to change the object in the middle of the world
   /// </summary>
   /// <param name="File"></param>
-  void spawnObj(std::string File)
+  PhysicsObject* spawnObj(std::string File)
   {
-      // Check if there was an previous object, if so remove it
-      if (previousObj != nullptr)
-      {
-          previousObj->~PhysicsObject();
-          rootNode.removeChild(previousObj);
-      }
-
-      PhysicsObject* objThing = ObjLoader::load(Files::dataDir() / File);
+      objThing = ObjLoader::load(Files::dataDir() / File);
       objThing->setOrigin({ 0.0f, 3.0f, 0.0f });
       objThing->mesh->shader =
           new Shader(Files::readFile(Files::dataDir() / "shader.vert"),
@@ -58,7 +52,26 @@ namespace Game {
       objThing->texture->load(Files::dataDir() / "crate.jpg", 3, GL_RGB);
       rootNode.addChild(objThing);
 
-      previousObj = objThing;
+      std::cout << "Spawned obj" << std::endl;
+
+      return objThing;
+  }
+
+  void setObjThingPos(glm::vec3 newPos)
+  {
+      if (objThing && objThing != nullptr)
+      {
+          objThing->setOrigin(newPos);
+      }
+  }
+
+  void removeObjThing()
+  {
+	  if (objThing && objThing != nullptr)
+	  {
+		  objThing->~PhysicsObject();
+		  objThing = nullptr;
+	  }
   }
 
   void update() {

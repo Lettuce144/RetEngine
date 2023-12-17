@@ -113,6 +113,11 @@ void PhysicsObject::setWorldTransform(btTransform value) {
   m_rigidBody->setWorldTransform(value);
 }
 
+void PhysicsObject::setGravity(btVector3 gravityValue) const
+{
+    m_rigidBody->setGravity(gravityValue);
+}
+
 void PhysicsObject::enableAngularMotion() {
     m_rigidBody->setAngularFactor({ 1.0f, 1.0f, 1.0f });
 }

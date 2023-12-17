@@ -2,6 +2,7 @@
 #define __NODE_HPP__
 
 #include <vector>
+#include <iostream>
 
 #include "glm/ext.hpp"
 
@@ -13,6 +14,8 @@ public:
   glm::vec3 pos { 0.0f };
   glm::vec3 rot { 0.0f };
   glm::vec3 scl { 1.0f };
+
+  std::string name = "";
 
   Node();
   virtual ~Node();

@@ -2,6 +2,11 @@
 #include "gl.hpp"
 
 #pragma once
+
+/*!
+* This class is used to create a framebuffer object and a texture to render to.
+* Feel free to modify incase you want to attach other buffers as well
+*/
 class FrameBuffer
 {
 public:

@@ -22,14 +22,12 @@ private:
 /// </summary>
 /// <param name="path"></param>
 /// <param name="pos"></param>
-class StaticProp
+class StaticProp : public PhysicsObject
 {
 public:
-	StaticProp(std::string model_path, glm::vec3 pos);
-
-	PhysicsObject* prop;
+	StaticProp(std::string model_path, glm::vec3 pos, bool objModel = false);
 	~StaticProp();
 
 private:
-
+	PhysicsObject* m_prop;
 };
