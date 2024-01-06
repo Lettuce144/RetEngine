@@ -7,6 +7,8 @@ bin/**
 #Cmake and vcpkg
 vcpkg_installed/
 build/
+out/
+
 
 Docs/
 

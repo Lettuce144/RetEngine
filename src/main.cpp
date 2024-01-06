@@ -11,6 +11,9 @@
 #include "window.hpp"
 #include "game.hpp"
 #include "Framebuffer.h"
+#include "Engine.h"
+
+//Move me to a seperate namespace!
 
 #define WND_WIDTH 1280
 #define WND_HEIGHT 800
@@ -21,6 +24,7 @@
 
 void DrawTree(const Node* n)
 {
+	//Set the class name of the node to the hiearchy
 	if (ImGui::TreeNode(n->name.c_str())) {
 		for (const Node* child : n->children())
 			DrawTree(child);
@@ -81,15 +85,17 @@ int main(int argc, char* argv[]) {
 	ImGui_ImplOpenGL3_Init("#version 330");
 
 	PhysicsObject* obj = nullptr;
+	glm::vec2 viewportSize;
+
+
 	while (Game::window->isOpen()) {
 		glfwPollEvents();
 
 		// Update window size and aspect ratio
 		int newWidth, newHeight;
 		glfwGetFramebufferSize(Game::window->glfw(), &newWidth, &newHeight);
-		float aspectRatio = static_cast<float>(newWidth) / static_cast<float>(newHeight);
 
-		buffer->RescaleFrameBuffer(newWidth, newHeight);
+		//buffer->RescaleFrameBuffer(newWidth, newHeight);
 
 		glViewport(0, 0, newWidth, newHeight);
 
@@ -127,11 +133,9 @@ int main(int argc, char* argv[]) {
 
 		if (obj != nullptr)
 		{
-			
-
 			ImGui::Begin("Model Transform");
 				ImGui::Text("Model Transform");
-				float x, y, z = 0.0f;
+				float x, y, z;
 				ImGui::SliderFloat("X", &x, -10.0f, 10.0f);
 				ImGui::SliderFloat("Y", &y, -10.0f, 10.0f);
 				ImGui::SliderFloat("Z", &z, -10.0f, 10.0f);
@@ -143,14 +147,20 @@ int main(int argc, char* argv[]) {
 		ImGui::ShowDemoWindow();
 		ImGui::Begin("GameWindow");
 		{
-			// Using a Child allow to fill all the space of the window.
-			// It also allows for customization
-			ImGui::BeginChild("GameRender");
+
 			// Get the size of the child (i.e. the whole draw size of the windows).
-			ImVec2 wsize = ImGui::GetWindowSize();
-			// Because I use the texture from OpenGL, I need to invert the V from the UV.
-			ImGui::Image((ImTextureID)buffer->getFrameTexture(), wsize, ImVec2(0, 1), ImVec2(1, 0));
-			ImGui::EndChild();
+			ImVec2 viewportPanelSize = ImGui::GetContentRegionAvail();
+			//What in gods name does this even mean?
+			if (viewportSize != *((glm::vec2*)&viewportPanelSize))
+			{
+				buffer->RescaleFrameBuffer(viewportPanelSize.x, viewportPanelSize.y);
+				viewportSize = { viewportPanelSize.x, viewportPanelSize.y };
+				PRINT_CONSOLE("Rescaling framebuffer");
+				
+				//Default player call here
+			}
+
+			ImGui::Image((ImTextureID)buffer->getFrameTexture(), ImVec2{viewportSize.x, viewportSize.y}, ImVec2(0, 1), ImVec2(1, 0));
 		}
 		ImGui::End();
 

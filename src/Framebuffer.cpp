@@ -48,7 +48,8 @@ unsigned int FrameBuffer::getFrameTexture()
 	return texture;
 }
 
-void FrameBuffer::RescaleFrameBuffer(float width, float height)
+//Thanks Cherno :P
+void FrameBuffer::RescaleFrameBuffer(uint32_t width, uint32_t height)
 {
 	glBindTexture(GL_TEXTURE_2D, texture);
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);

@@ -15,7 +15,7 @@ public:
 
 	unsigned int getFrameBuffer();
 	unsigned int getFrameTexture();
-	void RescaleFrameBuffer(float width, float height);
+	void RescaleFrameBuffer(uint32_t width, uint32_t height);
 	void Bind() const;
 	void Unbind() const;
 
