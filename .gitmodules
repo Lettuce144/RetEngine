@@ -4,3 +4,6 @@
 [submodule "thirdparty/ImGuiFileDialog"]
 	path = thirdparty/ImGuiFileDialog
 	url = https://github.com/aiekick/ImGuiFileDialog
+[submodule "thirdparty/glew-cmake"]
+	path = thirdparty/glew-cmake
+	url = https://github.com/Perlmint/glew-cmake

@@ -3,34 +3,15 @@ project(RetEngine)
 
 # Spaghetticode alert!
 
-# Add your source files
-set(Sources
-    src/animator.cpp
-    src/camera.cpp
-    src/files.cpp
-    src/Framebuffer.cpp
-    src/game.cpp
-    src/gen_world.cpp
-    src/input_events.cpp
-    src/main.cpp
-    src/mesh.cpp
-    src/mesh_gen.cpp
-    src/mesh_instance.cpp
-    src/mesh_loader.cpp
-    src/node.cpp
-    src/obj_loader.cpp
-    src/physics_object.cpp
-    src/player.cpp
-    src/setup_dynamics_world.cpp
-    src/shader.cpp
-    src/shaders.cpp
-    src/stb_impl.cpp
-    src/texture.cpp
-    src/window.cpp
-)
+# Add the source files
+# Incase the project ever gets bigger, we need to start listing our files manually.
+file(GLOB Sources src/*.cpp)
+file(GLOB Headers src/*.(h|hpp))
+
+
 
 # Files for ImGui
-# Switch to subdir too!
+# Switch to seperate project!
 set(ImGui
     ${IMGUI_INCLUDE_DIRS}/imgui.cpp
     ${IMGUI_INCLUDE_DIRS}/imgui_demo.cpp
@@ -42,18 +23,19 @@ set(ImGui
     ${IMGUI_FILEDIALOG_INCLUDE_DIRS}/ImGuiFileDialog.cpp
 
 )
-# Add glew, I HATE VCPKG
-add_subdirectory(thirdparty/glew)
 
 set(Props 
     src/props/props.cpp
 )
 
+#Adds filters, these are not the real directories!
 source_group("Source Files\\ImGui" FILES ${ImGui})
+source_group("Source Headers\\" FILES ${Headers})
 source_group("Source Files\\Engine" FILES ${Sources})
 source_group("Source Files\\Engine\\Props" FILES ${Props})
 
 find_package(Bullet CONFIG REQUIRED)
+find_package(GLEW REQUIRED)
 find_package(glfw3 REQUIRED)
 
 add_executable(RetEngine ${Sources} ${ImGui} ${Props})
@@ -72,4 +54,4 @@ target_include_directories(RetEngine PRIVATE ${LIB_INCLUDE_DIRS} ${IMGUI_INCLUDE
 
 target_link_libraries(RetEngine PRIVATE ${BULLET_LIBRARIES})
 target_link_libraries(RetEngine PRIVATE glfw)
-target_link_libraries(RetEngine PRIVATE libglew_static)
+target_link_libraries(RetEngine PRIVATE GLEW::GLEW)
