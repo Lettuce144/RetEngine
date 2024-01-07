@@ -1,3 +1,7 @@
 {
-  "dependencies": ["bullet3", "glew", "glfw3"]
+  "dependencies": [
+    "bullet3",
+    "glew",
+    "glfw3"
+  ]
 }

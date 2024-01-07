@@ -1,7 +1,7 @@
 #ifndef __GL_HPP__
 #define __GL_HPP__
 
-//#define GLEW_STATIC
+#define GLEW_STATIC
 
 #include <GL/glew.h>
 #include <GL/gl.h>

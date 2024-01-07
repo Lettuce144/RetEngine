@@ -17,7 +17,7 @@
 
 #define WND_WIDTH 1280
 #define WND_HEIGHT 800
-#define WND_TITLE "game"
+#define WND_TITLE "Game"
 #define WND_MONITOR glfwGetPrimaryMonitor()
 
 #define PSEUDO_NOSTALGIC_LOADING_DURATION 0000
