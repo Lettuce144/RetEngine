@@ -8,9 +8,6 @@
 class Camera : public Node {
 
 public:
-  float fov = glm::radians(60.0f);
-  float zNear = 0.01f;
-  float zFar = 100.0f;
 
   Camera();
   ~Camera();
@@ -18,11 +15,21 @@ public:
   //Setup the projection matrix
   glm::mat4 proj();
 
+  virtual void SetFov(float fov) { fov = m_flFov; }
+  void Resize(float width, float height);
+
   //Returns the viewdir of the camera based of the viewmatrix
   glm::vec3 viewDir();
+
   glm::mat4 cameraMatrix = glm::mat4(1.0f);
 
-  //void Matrix(Shader &shader, const char *uniform);
+
+private:
+	glm::mat4 m_projection;
+
+	float m_flFov = glm::radians(60.0f);
+	float m_flzNear = 0.01f;
+	float m_flzFar = 100.0f;
 
 };
 

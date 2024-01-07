@@ -5,10 +5,13 @@ Compiler: MCVS2022
 
 ## Dependencies
 * GLFW
+* GLEW
+* GLM
+* Linear Math
 * ImGui (Docking branch)
 * ImGuiFileDialog
-* BulletPhysicsEngine
-* stb_image
+* Bullet Physics
+* stb
 
 ## building
 Windows:

@@ -79,25 +79,17 @@ int main(int argc, char* argv[]) {
 	ImGui::CreateContext();
 	ImGuiIO& io = ImGui::GetIO(); (void)io;
 	io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
-	//io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable; 
+	io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable; 
 	ImGui::StyleColorsDark();
 	ImGui_ImplGlfw_InitForOpenGL(Game::window->glfw(), true);
 	ImGui_ImplOpenGL3_Init("#version 330");
 
 	PhysicsObject* obj = nullptr;
-	glm::vec2 viewportSize;
+	glm::vec2 viewportSize = {0.0f, 0.0f};
 
 
 	while (Game::window->isOpen()) {
 		glfwPollEvents();
-
-		// Update window size and aspect ratio
-		int newWidth, newHeight;
-		glfwGetFramebufferSize(Game::window->glfw(), &newWidth, &newHeight);
-
-		//buffer->RescaleFrameBuffer(newWidth, newHeight);
-
-		glViewport(0, 0, newWidth, newHeight);
 
 		//Imgui:
 		ImGui_ImplOpenGL3_NewFrame();
@@ -154,10 +146,12 @@ int main(int argc, char* argv[]) {
 			if (viewportSize != *((glm::vec2*)&viewportPanelSize))
 			{
 				buffer->RescaleFrameBuffer(viewportPanelSize.x, viewportPanelSize.y);
+
 				viewportSize = { viewportPanelSize.x, viewportPanelSize.y };
 				PRINT_CONSOLE("Rescaling framebuffer");
 				
 				//Default player call here
+				Game::player->camera()->Resize(viewportPanelSize.x, viewportPanelSize.y);
 			}
 
 			ImGui::Image((ImTextureID)buffer->getFrameTexture(), ImVec2{viewportSize.x, viewportSize.y}, ImVec2(0, 1), ImVec2(1, 0));
@@ -172,6 +166,7 @@ int main(int argc, char* argv[]) {
 
 		//Start with capturing the scene here
 		buffer->Bind();
+
 		//-------------------------------
 
 		glClearColor(Game::clearColor.r, Game::clearColor.g, Game::clearColor.b,
