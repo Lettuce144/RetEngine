@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - gh-pages
       
   workflow_dispatch:
   
@@ -15,6 +14,7 @@ jobs:
       - uses: DenverCoder1/doxygen-github-pages-action@v1.3.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: gh-pages
+          branch: main
+          config_file: Doxyfile_MakeDocs
           folder: docs/
                 
