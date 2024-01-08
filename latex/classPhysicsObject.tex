@@ -1,0 +1,110 @@
+\hypertarget{classPhysicsObject}{}\doxysection{Physics\+Object Class Reference}
+\label{classPhysicsObject}\index{PhysicsObject@{PhysicsObject}}
+Inheritance diagram for Physics\+Object\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classPhysicsObject}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPhysicsObject_a0dd37cc0f9535b676d3df937eaeb4780}{Physics\+Object}} ()
+\begin{DoxyCompactList}\small\item\em Class for creating and managing props \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPhysicsObject_a87e7c3dee73864a75238e51c7da6450f}\label{classPhysicsObject_a87e7c3dee73864a75238e51c7da6450f}} 
+void {\bfseries draw} () override
+\item 
+\mbox{\Hypertarget{classPhysicsObject_aaae3473cc10c26d2d3b77eb2e870eb45}\label{classPhysicsObject_aaae3473cc10c26d2d3b77eb2e870eb45}} 
+bt\+Collision\+Shape $\ast$ {\bfseries collision\+Shape} () const
+\item 
+\mbox{\Hypertarget{classPhysicsObject_a134daa622815b10ebacce13a29e82acd}\label{classPhysicsObject_a134daa622815b10ebacce13a29e82acd}} 
+void {\bfseries set\+Collision\+Shape} (bt\+Collision\+Shape $\ast$)
+\item 
+\mbox{\Hypertarget{classPhysicsObject_a6996959eedbd9d2333556005c7776a99}\label{classPhysicsObject_a6996959eedbd9d2333556005c7776a99}} 
+float {\bfseries friction} () const
+\item 
+\mbox{\Hypertarget{classPhysicsObject_a1343abc3f9c6bd5ed2a52860933f96a6}\label{classPhysicsObject_a1343abc3f9c6bd5ed2a52860933f96a6}} 
+void {\bfseries set\+Friction} (float)
+\item 
+\mbox{\Hypertarget{classPhysicsObject_ac996c6033c39f3fe3bb59ac777290467}\label{classPhysicsObject_ac996c6033c39f3fe3bb59ac777290467}} 
+float {\bfseries mass} () const
+\item 
+\mbox{\Hypertarget{classPhysicsObject_a865d78ef7f276eb485a94c7ea8fdc1a9}\label{classPhysicsObject_a865d78ef7f276eb485a94c7ea8fdc1a9}} 
+glm\+::vec3 {\bfseries local\+Inertia} () const
+\item 
+\mbox{\Hypertarget{classPhysicsObject_ad79ba3bf3c2e21b27035b1a2f218e667}\label{classPhysicsObject_ad79ba3bf3c2e21b27035b1a2f218e667}} 
+void {\bfseries set\+Mass\+Props} (float, glm\+::vec3)
+\item 
+\mbox{\Hypertarget{classPhysicsObject_a8da7c2b9a0d491633dc8057b6d95de11}\label{classPhysicsObject_a8da7c2b9a0d491633dc8057b6d95de11}} 
+void {\bfseries Update} ()
+\item 
+\mbox{\Hypertarget{classPhysicsObject_a76845737dff592f13776b7070432261d}\label{classPhysicsObject_a76845737dff592f13776b7070432261d}} 
+int {\bfseries activation\+State} () const
+\item 
+\mbox{\Hypertarget{classPhysicsObject_aacf484be7fd65e65c57c138cfe7becfe}\label{classPhysicsObject_aacf484be7fd65e65c57c138cfe7becfe}} 
+void {\bfseries set\+Activation\+State} (int)
+\item 
+\mbox{\Hypertarget{classPhysicsObject_a3b28e30a6b097ac8e4b2f5e789e501c5}\label{classPhysicsObject_a3b28e30a6b097ac8e4b2f5e789e501c5}} 
+glm\+::vec3 {\bfseries angular\+Factor} () const
+\item 
+\mbox{\Hypertarget{classPhysicsObject_a3948904a17ad207705cd8c34910ba32a}\label{classPhysicsObject_a3948904a17ad207705cd8c34910ba32a}} 
+void {\bfseries set\+Angular\+Factor} (glm\+::vec3)
+\item 
+\mbox{\Hypertarget{classPhysicsObject_a92ebaa92812eddbb2fc992cff133da75}\label{classPhysicsObject_a92ebaa92812eddbb2fc992cff133da75}} 
+glm\+::vec3 {\bfseries linear\+Velocity} () const
+\item 
+\mbox{\Hypertarget{classPhysicsObject_a46dd754e2c6beb46b916d80094384fab}\label{classPhysicsObject_a46dd754e2c6beb46b916d80094384fab}} 
+void {\bfseries set\+Linear\+Velocity} (glm\+::vec3)
+\item 
+\mbox{\Hypertarget{classPhysicsObject_a3499ca2c6037248ca5086313c97c71bb}\label{classPhysicsObject_a3499ca2c6037248ca5086313c97c71bb}} 
+bt\+Transform {\bfseries world\+Transform} () const
+\item 
+\mbox{\Hypertarget{classPhysicsObject_a987bc525f99e1cae10da69a1850c15d2}\label{classPhysicsObject_a987bc525f99e1cae10da69a1850c15d2}} 
+void {\bfseries set\+World\+Transform} (bt\+Transform)
+\item 
+\mbox{\Hypertarget{classPhysicsObject_a0e443d3b7b72d8d126e101270c4fb1c6}\label{classPhysicsObject_a0e443d3b7b72d8d126e101270c4fb1c6}} 
+void {\bfseries set\+Gravity} (bt\+Vector3 gravity\+Value) const
+\item 
+\mbox{\Hypertarget{classPhysicsObject_a73503e66e9fee33d06c36ba3fe6b8c49}\label{classPhysicsObject_a73503e66e9fee33d06c36ba3fe6b8c49}} 
+void {\bfseries enable\+Angular\+Motion} ()
+\item 
+\mbox{\Hypertarget{classPhysicsObject_ae88fb44d8d1e9de6998f0c8245c02d78}\label{classPhysicsObject_ae88fb44d8d1e9de6998f0c8245c02d78}} 
+void {\bfseries set\+Inertia\+Tensor} ()
+\item 
+\mbox{\Hypertarget{classPhysicsObject_a676f231acb60306ec55d244100a39b5b}\label{classPhysicsObject_a676f231acb60306ec55d244100a39b5b}} 
+glm\+::vec3 {\bfseries origin} () const
+\item 
+\mbox{\Hypertarget{classPhysicsObject_ab3713ffca585d598db271b0ced3660df}\label{classPhysicsObject_ab3713ffca585d598db271b0ced3660df}} 
+void {\bfseries set\+Origin} (glm\+::vec3)
+\item 
+\mbox{\Hypertarget{classPhysicsObject_a94eb6df069db4ec1928ed08114491fe2}\label{classPhysicsObject_a94eb6df069db4ec1928ed08114491fe2}} 
+glm\+::vec3 {\bfseries floor\+Normal} () const
+\item 
+\mbox{\Hypertarget{classPhysicsObject_ac0aa69a485451c82c048a662dcd0250d}\label{classPhysicsObject_ac0aa69a485451c82c048a662dcd0250d}} 
+bool {\bfseries is\+On\+Floor} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPhysicsObject_a4a63b21cd2d7dc9ff6aed3435b37fa8a}\label{classPhysicsObject_a4a63b21cd2d7dc9ff6aed3435b37fa8a}} 
+float {\bfseries slope\+Max\+NormalY} = 0.\+4f
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classPhysicsObject_a0dd37cc0f9535b676d3df937eaeb4780}\label{classPhysicsObject_a0dd37cc0f9535b676d3df937eaeb4780}} 
+\index{PhysicsObject@{PhysicsObject}!PhysicsObject@{PhysicsObject}}
+\index{PhysicsObject@{PhysicsObject}!PhysicsObject@{PhysicsObject}}
+\doxysubsubsection{\texorpdfstring{PhysicsObject()}{PhysicsObject()}}
+{\footnotesize\ttfamily Physics\+Object\+::\+Physics\+Object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Class for creating and managing props 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/physics\+\_\+object.\+hpp\item 
+src/physics\+\_\+object.\+cpp\end{DoxyCompactItemize}

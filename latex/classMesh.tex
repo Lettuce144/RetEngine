@@ -1,0 +1,48 @@
+\hypertarget{classMesh}{}\doxysection{Mesh Class Reference}
+\label{classMesh}\index{Mesh@{Mesh}}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structMesh_1_1Buffer}{Buffer}}
+\item 
+struct \mbox{\hyperlink{structMesh_1_1IBuffer}{IBuffer}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMesh_a354974083edef76ac67b4c69d7d45a18}\label{classMesh_a354974083edef76ac67b4c69d7d45a18}} 
+void {\bfseries bind} () const
+\item 
+\mbox{\Hypertarget{classMesh_a9a800b3b665c6c4c5ae66eb72ab4b8cb}\label{classMesh_a9a800b3b665c6c4c5ae66eb72ab4b8cb}} 
+std\+::map$<$ unsigned int, \mbox{\hyperlink{structMesh_1_1IBuffer}{IBuffer}} $\ast$ $>$ {\bfseries buffers} ()
+\item 
+\mbox{\Hypertarget{classMesh_af621099774001f276ec1e1e05e0c5060}\label{classMesh_af621099774001f276ec1e1e05e0c5060}} 
+{\footnotesize template$<$typename T $>$ }\\\mbox{\hyperlink{structMesh_1_1Buffer}{Buffer}}$<$ T $>$ $\ast$ {\bfseries buffer} (unsigned int)
+\item 
+\mbox{\Hypertarget{classMesh_af2688c22c4baf6efaefd83c41fcf285d}\label{classMesh_af2688c22c4baf6efaefd83c41fcf285d}} 
+{\footnotesize template$<$typename T $>$ }\\void {\bfseries set\+Buffer} (\mbox{\hyperlink{structMesh_1_1Buffer}{Buffer}}$<$ T $>$ $\ast$)
+\item 
+\mbox{\Hypertarget{classMesh_ae6defaaad08b2ea3ecf517cf1312f03a}\label{classMesh_ae6defaaad08b2ea3ecf517cf1312f03a}} 
+void {\bfseries draw\+Elements} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMesh_a2b8d5a5df0d13a63c984339539a3f376}\label{classMesh_a2b8d5a5df0d13a63c984339539a3f376}} 
+static void {\bfseries unbind} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMesh_a26632e27b772f24b069a738e7983b9da}\label{classMesh_a26632e27b772f24b069a738e7983b9da}} 
+std\+::vector$<$ unsigned int $>$ {\bfseries indices} \{\}
+\item 
+\mbox{\Hypertarget{classMesh_a5578bb0abf093305807659ca6faa6745}\label{classMesh_a5578bb0abf093305807659ca6faa6745}} 
+\mbox{\hyperlink{classShader}{Shader}} $\ast$ {\bfseries shader} = nullptr
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/mesh.\+hpp\item 
+src/mesh.\+cpp\end{DoxyCompactItemize}

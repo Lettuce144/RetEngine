@@ -1,0 +1,77 @@
+\hypertarget{classWindow}{}\doxysection{Window Class Reference}
+\label{classWindow}\index{Window@{Window}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classWindow_aca3b3ed15d39f123389e7ebd0a7fa5da}\label{classWindow_aca3b3ed15d39f123389e7ebd0a7fa5da}} 
+{\bfseries Window} (int, int, const char $\ast$, GLFWmonitor $\ast$)
+\item 
+\mbox{\Hypertarget{classWindow_a55b9da40ea03562682a6dd69c3a388b7}\label{classWindow_a55b9da40ea03562682a6dd69c3a388b7}} 
+GLFWwindow $\ast$ {\bfseries glfw} () const
+\item 
+\mbox{\Hypertarget{classWindow_a96e536facc3e3dd79fc14351477f6c1e}\label{classWindow_a96e536facc3e3dd79fc14351477f6c1e}} 
+void {\bfseries make\+Current} () const
+\item 
+\mbox{\Hypertarget{classWindow_a04ab8fcdfcc749a5f5f2c0441528b5b0}\label{classWindow_a04ab8fcdfcc749a5f5f2c0441528b5b0}} 
+void {\bfseries swap\+Buffers} () const
+\item 
+\mbox{\Hypertarget{classWindow_a761d614931fb5a5daa70e4f580c3e78e}\label{classWindow_a761d614931fb5a5daa70e4f580c3e78e}} 
+bool {\bfseries is\+Open} () const
+\item 
+\mbox{\Hypertarget{classWindow_adb197056d79de77c9a5856770e56e933}\label{classWindow_adb197056d79de77c9a5856770e56e933}} 
+void {\bfseries close} () const
+\item 
+\mbox{\Hypertarget{classWindow_a0dd9b6c4d940c59a5a77d077c86cd5c5}\label{classWindow_a0dd9b6c4d940c59a5a77d077c86cd5c5}} 
+void {\bfseries destroy} () const
+\item 
+\mbox{\Hypertarget{classWindow_a23eda8a5fad091d093b31b6817d4dac1}\label{classWindow_a23eda8a5fad091d093b31b6817d4dac1}} 
+glm\+::ivec2 {\bfseries size} () const
+\item 
+\mbox{\Hypertarget{classWindow_a9a4da0758afb279730db18bd78408363}\label{classWindow_a9a4da0758afb279730db18bd78408363}} 
+glm\+::vec2 {\bfseries cursor\+Pos} () const
+\item 
+\mbox{\Hypertarget{classWindow_a5270951c4cd53520de9a37aee48ba79d}\label{classWindow_a5270951c4cd53520de9a37aee48ba79d}} 
+int {\bfseries input\+Mode} (int) const
+\item 
+\mbox{\Hypertarget{classWindow_a1c7b87ac7c4c2e33f7834732dbd1fb8e}\label{classWindow_a1c7b87ac7c4c2e33f7834732dbd1fb8e}} 
+void {\bfseries set\+Input\+Mode} (int, int) const
+\item 
+void \mbox{\hyperlink{classWindow_a15bd28671a45fe9bbb161ae2946f009d}{Unlock\+Cursor}} ()
+\begin{DoxyCompactList}\small\item\em Is a toggle for the cursor lock. in player.\+cpp \char`\"{}set\+Input\+Mode(\+GLFW\+\_\+\+CURSOR, GLFW\+\_\+\+CURSOR\+\_\+\+DISABLED);\char`\"{} is called so we will be in unfocus first \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classWindow_ab3f7c39a71ddab94b91eb24dc2e0e497}\label{classWindow_ab3f7c39a71ddab94b91eb24dc2e0e497}} 
+bool {\bfseries Is\+Focused} ()
+\item 
+\mbox{\Hypertarget{classWindow_a0ee70e57d13a70ca5e5b3dabc0e74e5a}\label{classWindow_a0ee70e57d13a70ca5e5b3dabc0e74e5a}} 
+void {\bfseries set\+Focus} ()
+\item 
+\mbox{\Hypertarget{classWindow_a983380068740facd8a623b56beab49e1}\label{classWindow_a983380068740facd8a623b56beab49e1}} 
+bool {\bfseries is\+Key\+Pressed} (int) const
+\item 
+\mbox{\Hypertarget{classWindow_aa16c4316234c1d29cba26d2eb931ea92}\label{classWindow_aa16c4316234c1d29cba26d2eb931ea92}} 
+bool {\bfseries is\+Key\+Released} (int key) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classWindow_a482a6c74c8d066c7c83cf1d5731bfe34}\label{classWindow_a482a6c74c8d066c7c83cf1d5731bfe34}} 
+std\+::function$<$ void(\mbox{\hyperlink{classInputEvent}{Input\+Event}} $\ast$)$>$ {\bfseries input\+Callback} = nullptr
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classWindow_a15bd28671a45fe9bbb161ae2946f009d}\label{classWindow_a15bd28671a45fe9bbb161ae2946f009d}} 
+\index{Window@{Window}!UnlockCursor@{UnlockCursor}}
+\index{UnlockCursor@{UnlockCursor}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{UnlockCursor()}{UnlockCursor()}}
+{\footnotesize\ttfamily void Window\+::\+Unlock\+Cursor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Is a toggle for the cursor lock. in player.\+cpp \char`\"{}set\+Input\+Mode(\+GLFW\+\_\+\+CURSOR, GLFW\+\_\+\+CURSOR\+\_\+\+DISABLED);\char`\"{} is called so we will be in unfocus first 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/window.\+hpp\item 
+src/window.\+cpp\end{DoxyCompactItemize}
