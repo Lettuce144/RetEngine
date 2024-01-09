@@ -17,6 +17,7 @@
 namespace Game {
 
   Window *window = nullptr;
+  //Sky
   glm::vec4 clearColor { 0.1f, 0.15f, 0.2f, 1.0f };
 
   btDiscreteDynamicsWorld *dynamicsWorld = nullptr;
@@ -25,15 +26,15 @@ namespace Game {
   PhysicsObject* objThing = nullptr;
 
   Node rootNode;
-  Player *player = nullptr;
+  BasePlayer *player = nullptr;
 
   void start() {
     SetupDynamicsWorld::setup();
     //Creates world
     GenWorld::all();
 
-    spawnObj("thing.obj");
-    player = new Player();
+   // spawnObj("thing.obj");
+    player = new BasePlayer();
     rootNode.addChild(player);
   }
 
@@ -73,16 +74,7 @@ namespace Game {
 		  objThing = nullptr;
 	  }
   }
-
-  void update() {
-    dynamicsWorld->stepSimulation(deltaTime());
-    Animator::step();
-  }
-
-  void end() {
-
-  }
-
+  
   float m_fllastTick = 0.0f;
   float m_fldeltaTime = 0.0f;
 
@@ -95,6 +87,17 @@ namespace Game {
       m_fllastTick = (float)glfwGetTime();
 
       return m_fldeltaTime;
+  }
+
+
+  void update() {
+    dynamicsWorld->stepSimulation(deltaTime());
+    Animator::step();
+  }
+
+  void end() {
+      delete objThing;
+      delete player;
   }
 
   void input(InputEvent *event) {

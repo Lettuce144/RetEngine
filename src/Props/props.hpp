@@ -10,11 +10,10 @@ public:
 	PhysicsProp(std::string model_path, glm::vec3 pos);
 	~PhysicsProp();
 
-	PhysicsObject* prop;
+	
 private:
-
-
-	float mass = 0.0f;
+	PhysicsObject* m_prop;
+	float m_mass = 0.0f;
 };
 
 /// <summary>

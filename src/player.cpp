@@ -20,17 +20,17 @@
 #include "animator.hpp"
 #include <iostream>
 
-const float Player::HEIGHT = 1.8f;
-const float Player::RADIUS = 0.8f;
-const float Player::MASS = 75.0f;
-const float Player::MOUSE_SENS = 0.00125f;
-const float Player::SPEED = 8.5f * 1.25f;
-const float Player::ACCEL = 0.2f;
-const float Player::AIR_ACCEL = 0.02f;
-const float Player::JUMP = 10.0f;
-const float Player::JUMP_HORIZONTAL_MULT = 1.5f;
+const float BasePlayer::HEIGHT = 1.8f;
+const float BasePlayer::RADIUS = 0.8f;
+const float BasePlayer::MASS = 75.0f;
+const float BasePlayer::MOUSE_SENS = 0.00125f;
+const float BasePlayer::SPEED = 8.5f * 1.25f;
+const float BasePlayer::ACCEL = 0.2f;
+const float BasePlayer::AIR_ACCEL = 0.02f;
+const float BasePlayer::JUMP = 10.0f;
+const float BasePlayer::JUMP_HORIZONTAL_MULT = 1.5f;
 
-Player::Player() {
+BasePlayer::BasePlayer() {
 	m_camera->pos.y = HEIGHT * 0.75f;
 	addChild(m_camera);
 
@@ -74,13 +74,13 @@ Player::Player() {
 														walkSpeedKeyframes));*/
 }
 
-Player::~Player() {}
+BasePlayer::~BasePlayer() {}
 
-Camera* Player::camera() const {
+Camera* BasePlayer::camera() const {
 	return m_camera;
 }
 
-void Player::draw() {
+void BasePlayer::draw() {
 	Window* wnd = Game::window;
 
 	glm::vec3 move;
@@ -106,7 +106,7 @@ void Player::draw() {
 	PhysicsObject::draw();
 }
 
-void Player::input(InputEvent* event) {
+void BasePlayer::input(InputEvent* event) {
 	Window* wnd = Game::window;
 
 	if (!wnd->IsFocused())

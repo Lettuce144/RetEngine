@@ -19,9 +19,7 @@ namespace Game {
   extern btCollisionDispatcher *collisionDispatcher;
 
   extern Node rootNode;
-  extern Player *player;
-
-
+  extern BasePlayer *player;
 
   void start();
   void update();

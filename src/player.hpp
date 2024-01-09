@@ -4,11 +4,15 @@
 #include "btBulletDynamicsCommon.h"
 #include "glm/ext.hpp"
 
-#include "physics_object.hpp"
 #include "camera.hpp"
 #include "input_events.hpp"
+#include "physics_object.hpp"
 
-class Player : public PhysicsObject {
+/// <summary>
+/// Base class for the player, this class is mainly used for debug purposes, and for the example game.
+/// There are multiple virtual functions like drawing and such
+/// </summary>
+class BasePlayer : public PhysicsObject {
 
 public:
   static const float HEIGHT;
@@ -21,12 +25,12 @@ public:
   static const float JUMP;
   static const float JUMP_HORIZONTAL_MULT;
 
-  Player();
-  ~Player();
+  BasePlayer();
+  ~BasePlayer();
 
   Camera *camera() const;
 
-  void draw() override;
+  void draw();
   void input(InputEvent*);
 
 private:

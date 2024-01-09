@@ -22,16 +22,15 @@
 PhysicsProp::PhysicsProp(std::string model_path, glm::vec3 pos)
 {
     std::cout << "Loading mesh: " + model_path << std::endl;
-    PhysicsObject* prop =
-        MeshLoader::loadPhysicsObject(Files::dataDir() / model_path);
+    m_prop = MeshLoader::loadPhysicsObject(Files::dataDir() / model_path);
     
-    prop->setOrigin(pos);
-    Game::rootNode.addChild(prop);
+    m_prop->setOrigin(pos);
+    Game::rootNode.addChild(m_prop);
 }
 
 PhysicsProp::~PhysicsProp()
 {
-	prop->~PhysicsObject();
+    m_prop->~PhysicsObject();
 }
 
 //-----------------------------------------------------------------------

@@ -79,13 +79,21 @@ namespace MeshLoader {
     };
 
     std::filesystem::path texturePath;
-    unsigned int textureChannels, textureGlChannels,
-      textureWrapS, textureWrapT, textureMinFilter, textureMagFilter;
+    
+    unsigned int textureChannels {};
+    unsigned int textureGlChannels {};
+    unsigned int textureWrapS {};
+    unsigned int textureWrapT {};
+    unsigned int textureMinFilter {};
+    unsigned int textureMagFilter {};
 
     std::filesystem::path vertexShaderPath;
     std::filesystem::path fragmentShaderPath;
 
-    unsigned int posPos, posSize, uvPos, uvSize;
+    unsigned int posPos {};
+    unsigned int posSize {};
+    unsigned int uvPos {};
+    unsigned int uvSize{};
 
     std::vector<unsigned int> indices {};
     std::vector<float> positions {};

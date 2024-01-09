@@ -20,12 +20,6 @@
 namespace GenWorld {
 
   void ground() {
-
-    //PhysicsObject *gnd =
-    //  MeshLoader::loadPhysicsObject(Files::dataDir()/"ground.mesh");
-    //gnd->setOrigin({ 0.0f, -0.5f, 0.0f });
-    //Game::rootNode.addChild(gnd);
-
     StaticProp *gnd = new StaticProp("ground.mesh", { 0.0f, -0.5f, 0.0f });
 
     PhysicsObject *slope =
@@ -45,7 +39,6 @@ namespace GenWorld {
     };
 
     PhysicsProp* prop = new PhysicsProp("crate.mesh", { 0.0f, 0.0f, -5.0f });
-
 
     Place({ 0.0f, 0.0f, -5.0f });
     Place({ 3.0f, 1.5f, -7.0f });

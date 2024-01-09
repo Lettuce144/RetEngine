@@ -14,7 +14,11 @@ public:
   glm::vec3 pos { 0.0f };
   glm::vec3 rot { 0.0f };
   glm::vec3 scl { 1.0f };
-
+  
+  /// <summary>
+  /// Child classname of the node,
+  /// Example: BasePlayer, parent: Node, So this will be BasePlayer
+  /// </summary>
   std::string name = "";
 
   Node();

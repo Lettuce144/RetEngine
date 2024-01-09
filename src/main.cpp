@@ -98,9 +98,14 @@ int main(int argc, char* argv[]) {
 		ImGui::DockSpaceOverViewport();
 
 		ImGui::Begin("Model Importer");
+		{
 			// open Dialog Simple
 			if (ImGui::Button("Open new model"))
-				ImGuiFileDialog::Instance()->OpenDialog("ChooseFileDlgKey", "Choose File", ".obj,", ".");
+			{
+				IGFD::FileDialogConfig config;
+				config.path = ".";
+				ImGuiFileDialog::Instance()->OpenDialog("ChooseFileDlgKey", "Choose File", ".obj,", config);
+			}
 
 			// display
 			if (ImGuiFileDialog::Instance()->Display("ChooseFileDlgKey"))
@@ -109,11 +114,11 @@ int main(int argc, char* argv[]) {
 				if (ImGuiFileDialog::Instance()->IsOk())
 				{
 					std::string modelName = ImGuiFileDialog::Instance()->GetCurrentFileName();
-					if(obj != nullptr)
+					if (obj != nullptr)
 						Game::removeObjThing();
-						obj = nullptr;
-						
-					
+					obj = nullptr;
+
+
 					obj = Game::spawnObj(modelName);
 
 				}
@@ -121,6 +126,7 @@ int main(int argc, char* argv[]) {
 				// close
 				ImGuiFileDialog::Instance()->Close();
 			}
+		}
 		ImGui::End();
 
 		if (obj != nullptr)
@@ -163,6 +169,7 @@ int main(int argc, char* argv[]) {
 		DrawTree(&Game::rootNode);
 		ImGui::End();
 #endif // RELEASE
+
 		//ImGui::EndFrame();
 
 		//Start with capturing the scene here
