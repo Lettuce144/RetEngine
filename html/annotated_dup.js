@@ -4,6 +4,7 @@ var annotated_dup =
       [ "Animation", "structAnimator_1_1Animation.html", "structAnimator_1_1Animation" ],
       [ "FloatAnimation", "structAnimator_1_1FloatAnimation.html", "structAnimator_1_1FloatAnimation" ]
     ] ],
+    [ "BasePlayer", "classBasePlayer.html", "classBasePlayer" ],
     [ "Camera", "classCamera.html", "classCamera" ],
     [ "FrameBuffer", "classFrameBuffer.html", "classFrameBuffer" ],
     [ "InputEvent", "classInputEvent.html", "classInputEvent" ],
@@ -15,7 +16,6 @@ var annotated_dup =
     [ "Node", "classNode.html", "classNode" ],
     [ "PhysicsObject", "classPhysicsObject.html", "classPhysicsObject" ],
     [ "PhysicsProp", "classPhysicsProp.html", "classPhysicsProp" ],
-    [ "Player", "classPlayer.html", "classPlayer" ],
     [ "Shader", "classShader.html", "classShader" ],
     [ "StaticProp", "classStaticProp.html", "classStaticProp" ],
     [ "Texture", "classTexture.html", "classTexture" ],

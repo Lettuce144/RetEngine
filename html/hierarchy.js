@@ -17,8 +17,8 @@ var hierarchy =
       [ "Camera", "classCamera.html", null ],
       [ "MeshInstance", "classMeshInstance.html", [
         [ "PhysicsObject", "classPhysicsObject.html", [
+          [ "BasePlayer", "classBasePlayer.html", null ],
           [ "PhysicsProp", "classPhysicsProp.html", null ],
-          [ "Player", "classPlayer.html", null ],
           [ "StaticProp", "classStaticProp.html", null ]
         ] ]
       ] ]

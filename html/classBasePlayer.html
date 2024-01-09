@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>RetEngine: Player Class Reference</title>
+<title>RetEngine: BasePlayer Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -64,7 +64,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('classPlayer.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('classBasePlayer.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -86,17 +86,22 @@ $(document).ready(function(){initNavTree('classPlayer.html',''); initResizable()
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
-<a href="classPlayer-members.html">List of all members</a>  </div>
+<a href="classBasePlayer-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">Player Class Reference</div>  </div>
+<div class="title">BasePlayer Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Base class for the player, this class is mainly used for debug purposes, and for the example game. There are multiple virtual functions like drawing and such  
+ <a href="classBasePlayer.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="player_8hpp_source.html">player.hpp</a>&gt;</code></p>
 <div class="dynheader">
-Inheritance diagram for Player:</div>
+Inheritance diagram for BasePlayer:</div>
 <div class="dyncontent">
  <div class="center">
-  <img src="classPlayer.png" usemap="#Player_map" alt=""/>
-  <map id="Player_map" name="Player_map">
+  <img src="classBasePlayer.png" usemap="#BasePlayer_map" alt=""/>
+  <map id="BasePlayer_map" name="BasePlayer_map">
 <area href="classPhysicsObject.html" alt="PhysicsObject" shape="rect" coords="0,112,93,136"/>
 <area href="classMeshInstance.html" alt="MeshInstance" shape="rect" coords="0,56,93,80"/>
 <area href="classNode.html" alt="Node" shape="rect" coords="0,0,93,24"/>
@@ -105,15 +110,15 @@ Inheritance diagram for Player:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a169972554e9848a65828248f0bf54e6d"><td class="memItemLeft" align="right" valign="top"><a id="a169972554e9848a65828248f0bf54e6d"></a>
+<tr class="memitem:aec4c5f399a64123638fe10981220b89c"><td class="memItemLeft" align="right" valign="top"><a id="aec4c5f399a64123638fe10981220b89c"></a>
 <a class="el" href="classCamera.html">Camera</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>camera</b> () const</td></tr>
-<tr class="separator:a169972554e9848a65828248f0bf54e6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7abe0fbf95b42b9ff4a2c0c7d334bc68"><td class="memItemLeft" align="right" valign="top"><a id="a7abe0fbf95b42b9ff4a2c0c7d334bc68"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>draw</b> () override</td></tr>
-<tr class="separator:a7abe0fbf95b42b9ff4a2c0c7d334bc68"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd949e47d7cb5e9b02c57b24873019ee"><td class="memItemLeft" align="right" valign="top"><a id="abd949e47d7cb5e9b02c57b24873019ee"></a>
+<tr class="separator:aec4c5f399a64123638fe10981220b89c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa43655cc94f2201e7c8d19a6a7679da1"><td class="memItemLeft" align="right" valign="top"><a id="aa43655cc94f2201e7c8d19a6a7679da1"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>draw</b> ()</td></tr>
+<tr class="separator:aa43655cc94f2201e7c8d19a6a7679da1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6edf194a4d3bb84f8098a20b3b66b899"><td class="memItemLeft" align="right" valign="top"><a id="a6edf194a4d3bb84f8098a20b3b66b899"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>input</b> (<a class="el" href="classInputEvent.html">InputEvent</a> *)</td></tr>
-<tr class="separator:abd949e47d7cb5e9b02c57b24873019ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a6edf194a4d3bb84f8098a20b3b66b899"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classPhysicsObject"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classPhysicsObject')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classPhysicsObject.html">PhysicsObject</a></td></tr>
 <tr class="memitem:a0dd37cc0f9535b676d3df937eaeb4780 inherit pub_methods_classPhysicsObject"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPhysicsObject.html#a0dd37cc0f9535b676d3df937eaeb4780">PhysicsObject</a> ()</td></tr>
 <tr class="memdesc:a0dd37cc0f9535b676d3df937eaeb4780 inherit pub_methods_classPhysicsObject"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class for creating and managing props  <a href="classPhysicsObject.html#a0dd37cc0f9535b676d3df937eaeb4780">More...</a><br /></td></tr>
@@ -215,33 +220,33 @@ glm::mat4&#160;</td><td class="memItemRight" valign="bottom"><b>view</b> () cons
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:aa9b8922ad26d247ad909313aa9c64bcd"><td class="memItemLeft" align="right" valign="top"><a id="aa9b8922ad26d247ad909313aa9c64bcd"></a>
+<tr class="memitem:ae1c2b2dd5cf8eaad4447bedf4e4dcc45"><td class="memItemLeft" align="right" valign="top"><a id="ae1c2b2dd5cf8eaad4447bedf4e4dcc45"></a>
 static const float&#160;</td><td class="memItemRight" valign="bottom"><b>HEIGHT</b> = 1.8f</td></tr>
-<tr class="separator:aa9b8922ad26d247ad909313aa9c64bcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2798a3a57ffb040fbc366e2485daee0"><td class="memItemLeft" align="right" valign="top"><a id="aa2798a3a57ffb040fbc366e2485daee0"></a>
+<tr class="separator:ae1c2b2dd5cf8eaad4447bedf4e4dcc45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a627fc177781c025d91447da082394ca5"><td class="memItemLeft" align="right" valign="top"><a id="a627fc177781c025d91447da082394ca5"></a>
 static const float&#160;</td><td class="memItemRight" valign="bottom"><b>RADIUS</b> = 0.8f</td></tr>
-<tr class="separator:aa2798a3a57ffb040fbc366e2485daee0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a099895bf857db6b76660e2ccd11186f8"><td class="memItemLeft" align="right" valign="top"><a id="a099895bf857db6b76660e2ccd11186f8"></a>
+<tr class="separator:a627fc177781c025d91447da082394ca5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbdf1b807f1c5845b7cc99527328cea6"><td class="memItemLeft" align="right" valign="top"><a id="acbdf1b807f1c5845b7cc99527328cea6"></a>
 static const float&#160;</td><td class="memItemRight" valign="bottom"><b>MASS</b> = 75.0f</td></tr>
-<tr class="separator:a099895bf857db6b76660e2ccd11186f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a30dae7ce859c43745489848641988c62"><td class="memItemLeft" align="right" valign="top"><a id="a30dae7ce859c43745489848641988c62"></a>
+<tr class="separator:acbdf1b807f1c5845b7cc99527328cea6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae824e72ebe84f3252aab7ea93260cef2"><td class="memItemLeft" align="right" valign="top"><a id="ae824e72ebe84f3252aab7ea93260cef2"></a>
 static const float&#160;</td><td class="memItemRight" valign="bottom"><b>MOUSE_SENS</b> = 0.00125f</td></tr>
-<tr class="separator:a30dae7ce859c43745489848641988c62"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ade302aee5ea52432e7123294f58ed977"><td class="memItemLeft" align="right" valign="top"><a id="ade302aee5ea52432e7123294f58ed977"></a>
+<tr class="separator:ae824e72ebe84f3252aab7ea93260cef2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acfdaa368e11e15c87122331971d763fc"><td class="memItemLeft" align="right" valign="top"><a id="acfdaa368e11e15c87122331971d763fc"></a>
 static const float&#160;</td><td class="memItemRight" valign="bottom"><b>SPEED</b> = 8.5f * 1.25f</td></tr>
-<tr class="separator:ade302aee5ea52432e7123294f58ed977"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acc853fc3c95d26a2471c6498e8fdb680"><td class="memItemLeft" align="right" valign="top"><a id="acc853fc3c95d26a2471c6498e8fdb680"></a>
+<tr class="separator:acfdaa368e11e15c87122331971d763fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87c80b8dfc0748cc02c6c1cf535d2aeb"><td class="memItemLeft" align="right" valign="top"><a id="a87c80b8dfc0748cc02c6c1cf535d2aeb"></a>
 static const float&#160;</td><td class="memItemRight" valign="bottom"><b>ACCEL</b> = 0.2f</td></tr>
-<tr class="separator:acc853fc3c95d26a2471c6498e8fdb680"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a64559448a9e327545417103fb36a40"><td class="memItemLeft" align="right" valign="top"><a id="a8a64559448a9e327545417103fb36a40"></a>
+<tr class="separator:a87c80b8dfc0748cc02c6c1cf535d2aeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9622b3cf4fb5ad2b46c5e9d5167af00"><td class="memItemLeft" align="right" valign="top"><a id="af9622b3cf4fb5ad2b46c5e9d5167af00"></a>
 static const float&#160;</td><td class="memItemRight" valign="bottom"><b>AIR_ACCEL</b> = 0.02f</td></tr>
-<tr class="separator:a8a64559448a9e327545417103fb36a40"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9769ed74c713fd6daf176f9e3aef63b9"><td class="memItemLeft" align="right" valign="top"><a id="a9769ed74c713fd6daf176f9e3aef63b9"></a>
+<tr class="separator:af9622b3cf4fb5ad2b46c5e9d5167af00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad935c45aa823388afefffaad7958d876"><td class="memItemLeft" align="right" valign="top"><a id="ad935c45aa823388afefffaad7958d876"></a>
 static const float&#160;</td><td class="memItemRight" valign="bottom"><b>JUMP</b> = 10.0f</td></tr>
-<tr class="separator:a9769ed74c713fd6daf176f9e3aef63b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a572ab3fb5f1bd8f08a1a8e4a1d1c5367"><td class="memItemLeft" align="right" valign="top"><a id="a572ab3fb5f1bd8f08a1a8e4a1d1c5367"></a>
+<tr class="separator:ad935c45aa823388afefffaad7958d876"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac30f332b215fcd185f1a238c62844ae0"><td class="memItemLeft" align="right" valign="top"><a id="ac30f332b215fcd185f1a238c62844ae0"></a>
 static const float&#160;</td><td class="memItemRight" valign="bottom"><b>JUMP_HORIZONTAL_MULT</b> = 1.5f</td></tr>
-<tr class="separator:a572ab3fb5f1bd8f08a1a8e4a1d1c5367"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:ac30f332b215fcd185f1a238c62844ae0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -269,11 +274,13 @@ glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>rot</b> { 0.0f }
 <tr class="memitem:a2ab378e0b96cd16af386fe9aeabadd9b inherit pub_attribs_classNode"><td class="memItemLeft" align="right" valign="top"><a id="a2ab378e0b96cd16af386fe9aeabadd9b"></a>
 glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>scl</b> { 1.0f }</td></tr>
 <tr class="separator:a2ab378e0b96cd16af386fe9aeabadd9b inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa829edc37a2c92dacdab95bcef248175 inherit pub_attribs_classNode"><td class="memItemLeft" align="right" valign="top"><a id="aa829edc37a2c92dacdab95bcef248175"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>name</b> = &quot;&quot;</td></tr>
+<tr class="memitem:aa829edc37a2c92dacdab95bcef248175 inherit pub_attribs_classNode"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#aa829edc37a2c92dacdab95bcef248175">name</a> = &quot;&quot;</td></tr>
+<tr class="memdesc:aa829edc37a2c92dacdab95bcef248175 inherit pub_attribs_classNode"><td class="mdescLeft">&#160;</td><td class="mdescRight">Child classname of the node, Example: <a class="el" href="classBasePlayer.html" title="Base class for the player, this class is mainly used for debug purposes, and for the example game....">BasePlayer</a>, parent: <a class="el" href="classNode.html">Node</a>, So this will be <a class="el" href="classBasePlayer.html" title="Base class for the player, this class is mainly used for debug purposes, and for the example game....">BasePlayer</a>  <a href="classNode.html#aa829edc37a2c92dacdab95bcef248175">More...</a><br /></td></tr>
 <tr class="separator:aa829edc37a2c92dacdab95bcef248175 inherit pub_attribs_classNode"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following files:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Base class for the player, this class is mainly used for debug purposes, and for the example game. There are multiple virtual functions like drawing and such </p>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/<a class="el" href="player_8hpp_source.html">player.hpp</a></li>
 <li>src/player.cpp</li>
 </ul>
@@ -282,7 +289,7 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>name</b> = &qu
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="classPlayer.html">Player</a></li>
+    <li class="navelem"><a class="el" href="classBasePlayer.html">BasePlayer</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>

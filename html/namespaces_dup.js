@@ -34,7 +34,7 @@ var namespaces_dup =
       [ "m_fldeltaTime", "game_8cpp.html#a7a31f0089cbc945334ee3e4c4ebbeb52", null ],
       [ "m_fllastTick", "game_8cpp.html#a1b355065db77c1fe791c06d8ece34788", null ],
       [ "objThing", "game_8cpp.html#a8fb8956e9991a83702743272882536d5", null ],
-      [ "player", "game_8cpp.html#a8914c28e5a74344877ad9a2ceb87d2d6", null ],
+      [ "player", "game_8cpp.html#a14eef01a4d6e13e05cd4b755186dbd66", null ],
       [ "rootNode", "game_8cpp.html#a693cf93d05732e715e586c7c429f607f", null ],
       [ "window", "game_8cpp.html#af6e7fac6c9d8f64d5911d654891a172b", null ]
     ] ],
