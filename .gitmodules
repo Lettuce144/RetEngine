@@ -2,5 +2,5 @@
 	path = doxygen-awesome-css
 	url = https://github.com/jothepro/doxygen-awesome-css.git
 [submodule "thirdparty/ImGuiFileDialog"]
-	path = thirdparty/ImGuiFileDialog
+	path = thirdparty/ImGui/ImGuiFileDialog
 	url = https://github.com/aiekick/ImGuiFileDialog
