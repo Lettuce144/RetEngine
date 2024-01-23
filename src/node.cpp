@@ -9,6 +9,7 @@
 Node::Node() {}
 Node::~Node() {}
 
+//Returns a node parent
 Node *Node::parent() const {
   return m_parent;
 }

@@ -10,7 +10,7 @@
 class FrameBuffer
 {
 public:
-	FrameBuffer(float width, float height);
+	FrameBuffer(int width, int height);
 	~FrameBuffer();
 
 	unsigned int getFrameBuffer();

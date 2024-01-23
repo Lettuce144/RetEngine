@@ -40,14 +40,14 @@ public:
 
 	void UnlockCursor();
 
-	bool IsFocused();
+	bool IsFocused() const;
 	void setFocus();
 	bool isKeyPressed(int) const;
 	bool isKeyReleased(int key) const;
 
 private:
 	GLFWwindow* m_glfw = nullptr;
-	//Imgui is broken so we will have to make our own focus method
+
 	//The focus is for the ImGui window and not the game
 	bool m_bisFocused = false;
 

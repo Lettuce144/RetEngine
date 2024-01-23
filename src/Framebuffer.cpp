@@ -6,7 +6,7 @@ Feel free to modify incase you want to attach other buffers as well
 
 #include "Framebuffer.h"
 
-FrameBuffer::FrameBuffer(float width, float height)
+FrameBuffer::FrameBuffer(int width, int height)
 {
 	glGenFramebuffers(1, &fbo);
 	glBindFramebuffer(GL_FRAMEBUFFER, fbo);

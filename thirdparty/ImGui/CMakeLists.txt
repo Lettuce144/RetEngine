@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.13)
 
 project(ImGuiLayer)
 
@@ -18,7 +18,7 @@ target_sources(ImGuiLayer PRIVATE
 find_package(GLEW REQUIRED)
 
 target_include_directories(ImGuiLayer PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/ImGuiDocking" "${CMAKE_CURRENT_SOURCE_DIR}/ImGuiFileDialog")
-target_link_libraries(ImGuiLayer PUBLIC glfw GLEW::GLEW)
+target_link_libraries(ImGuiLayer PUBLIC GLEW::GLEW)
 
 if(UNIX)
     target_compile_options(ImGuiLayer PUBLIC "-Wno-unknown-pragmas")

@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.12)
+cmake_minimum_required(VERSION 3.13)
 project(RetEngine)
 
 # Spaghetticode alert!
@@ -8,11 +8,14 @@ project(RetEngine)
 file(GLOB Sources src/*.cpp)
 file(GLOB Headers src/*.(h|hpp))
 
+
 set(Props 
     src/props/props.cpp
 )
 
 add_subdirectory(thirdparty/ImGui)
+add_subdirectory(src/RetSampleGame)
+add_subdirectory(src/Engine/RetApplication)
 
 #Adds filters, these are not the real directories!
 source_group("Source Headers\\" FILES ${Headers})
@@ -21,7 +24,7 @@ source_group("Source Files\\Engine\\Props" FILES ${Props})
 
 find_package(Bullet CONFIG REQUIRED)
 find_package(GLEW REQUIRED)
-find_package(glfw3 REQUIRED)
+find_package(glfw3)
 
 add_executable(RetEngine ${Sources} ${Props})
 
@@ -37,5 +40,5 @@ endif()
 # STB_Image and glm, Imgui , Bullet
 target_include_directories(RetEngine PRIVATE ${LIB_INCLUDE_DIRS} ${BULLET_INCLUDE_DIRS})
 
-target_link_libraries(RetEngine PRIVATE ${BULLET_LIBRARIES})
-target_link_libraries(RetEngine PRtarget_link_libraries(RetEngine PRIVATE GLEW::GLEW ImGuiLayer)
+target_link_libraries(RetEngine PRIVATE ${BULLET_LIBRARIES} glfw3dll)
+target_link_libraries(RetEngine PRIVATE GLEW::GLEW ImGuiLayer)

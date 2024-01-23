@@ -166,7 +166,7 @@ void Window::UnlockCursor()
     }   
 }
 
-bool Window::IsFocused() {
+bool Window::IsFocused() const {
     return m_bisFocused;
 }
 

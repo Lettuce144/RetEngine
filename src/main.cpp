@@ -13,7 +13,6 @@
 #include "Framebuffer.h"
 #include "Engine.h"
 
-//Move me to a seperate namespace!
 
 #define WND_WIDTH 1280
 #define WND_HEIGHT 800
@@ -59,7 +58,7 @@ int main(int argc, char* argv[]) {
 	Game::window->makeCurrent();
 	Game::window->inputCallback = Game::input;
 
-	FrameBuffer* buffer = new FrameBuffer(wWidth, wHeight);
+	auto buffer = std::make_unique<FrameBuffer>(wWidth, wHeight);
 
 	unsigned int sleepFor = PSEUDO_NOSTALGIC_LOADING_DURATION;
 	std::this_thread::sleep_for(std::chrono::milliseconds(sleepFor));
@@ -154,9 +153,9 @@ int main(int argc, char* argv[]) {
 				buffer->RescaleFrameBuffer(viewportPanelSize.x, viewportPanelSize.y);
 
 				viewportSize = { viewportPanelSize.x, viewportPanelSize.y };
-				PRINT_CONSOLE("Rescaling framebuffer");
+				RetEngine::PrintConsole("Resized the framebuffer", RetEngine::MessageType::log);
 				
-				//Default player call here
+				//Call the default player here
 				Game::player->camera()->Resize(viewportPanelSize.x, viewportPanelSize.y);
 			}
 
@@ -212,7 +211,6 @@ int main(int argc, char* argv[]) {
 	ImGui_ImplGlfw_Shutdown();
 	ImGui::DestroyContext();
 
-	buffer->~FrameBuffer();
 	Game::end();
 
 	delete Game::window;
