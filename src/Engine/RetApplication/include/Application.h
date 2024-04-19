@@ -7,9 +7,6 @@
 #endif
 
 namespace RetEngine {
-
-
-
 	class RETENGINE_APPLICATION Application
 	{
 	public:
@@ -24,6 +21,4 @@ namespace RetEngine {
 
 
 	Application* CreateApplication();
-
-
 }

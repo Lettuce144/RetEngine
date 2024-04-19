@@ -3,6 +3,7 @@ bin/**
 
 #Visual studio files
 .vs/
+.vscode/
 
 #Cmake and vcpkg
 vcpkg_installed/

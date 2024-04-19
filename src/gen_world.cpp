@@ -17,6 +17,7 @@
 #include "props/props.hpp"
 #include "obj_loader.hpp"
 
+//Loads the world
 namespace GenWorld {
 
   void ground() {

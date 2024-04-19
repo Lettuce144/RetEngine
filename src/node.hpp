@@ -6,6 +6,9 @@
 
 #include "glm/ext.hpp"
 
+/// <summary>
+/// An object in 3D space, all gameobjects derrive from this
+/// </summary>
 class Node {
 
 public:
@@ -14,12 +17,6 @@ public:
   glm::vec3 pos { 0.0f };
   glm::vec3 rot { 0.0f };
   glm::vec3 scl { 1.0f };
-  
-  /// <summary>
-  /// Child classname of the node,
-  /// Example: BasePlayer, parent: Node, So this will be BasePlayer
-  /// </summary>
-  std::string name = "";
 
   Node();
   virtual ~Node();
@@ -32,6 +29,8 @@ public:
   void addChild(Node*);
   void removeChild(Node*);
 
+  std::string GetClassName() const;
+
   glm::mat4 trans() const;
   glm::mat4 view() const;
 
@@ -40,6 +39,8 @@ public:
 private:
   Node *m_parent = nullptr;
   std::vector<Node*> m_children {};
+
+  std::string m_derivedClassName = "";
 
   glm::vec3 globalPos() const;
   glm::vec3 globalRot() const;

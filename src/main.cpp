@@ -24,7 +24,8 @@
 void DrawTree(const Node* n)
 {
 	//Set the class name of the node to the hiearchy
-	if (ImGui::TreeNode(n->name.c_str())) {
+	if (ImGui::TreeNode(n->GetClassName().c_str()))
+	{
 		for (const Node* child : n->children())
 			DrawTree(child);
 		ImGui::TreePop();

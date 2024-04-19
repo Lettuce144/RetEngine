@@ -26,19 +26,19 @@ void RetEngine::PrintConsole(const char* message, MessageType messageType)
 	switch (messageType)
 	{
 	case MessageType::error:
-		type = "[Error]";
+		type = "[Error] ";
 		break;
 	case MessageType::warn:
-		type = "[Warning]";
+		type = "[Warning] ";
 		break;
 	case MessageType::log:
-		type = "[Log]";
+		type = "[Log] ";
 		break;
 	default:
-		std::cout << "Unknown messageType" << std::endl;
+		std::cout << "Unknown messageType\n";
 		break;
 	}
 
-	std::cout << std::chrono::system_clock::now() << type << message << std::endl;
+	std::cout << std::chrono::system_clock::now() << type << message << "\n";
 
 }

@@ -6,9 +6,10 @@
 
 int main(int argc, char** argv)
 {
-	std::cout << "Hello world!" << std::endl;
+	std::cout << "Entrypoint call!" << std::endl;
 
 	auto app = RetEngine::CreateApplication();
+	//This should always loop
 	app->Run();
 	delete app;
 }

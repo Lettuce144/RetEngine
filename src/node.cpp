@@ -34,7 +34,7 @@ bool Node::hasChild(Node *child) const {
 
 void Node::addChild(Node *child) {
     //Get class name of child
-    child->name = typeid(*child).name();
+    child->m_derivedClassName = typeid(*child).name();
     child->reparent(this);
 }
 
@@ -42,6 +42,11 @@ void Node::removeChild(Node *child) {
     if (child->m_parent == this) {
         child->reparent(nullptr);
     }
+}
+
+std::string Node::GetClassName() const
+{
+    return m_derivedClassName;
 }
 
 glm::mat4 Node::trans() const {

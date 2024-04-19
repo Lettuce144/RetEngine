@@ -15,7 +15,6 @@ namespace RetEngine {
 		log, // This is too versatile, it basicly means everything that is not an error or a warning.
 	};
 
-	
 	#define PRINT_CONSOLE(message, messageType) std::cout << message << std::endl;
 
 	void LoadEngine();
