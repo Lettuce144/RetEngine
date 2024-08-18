@@ -3,10 +3,12 @@
 #include <fstream>
 #include "catclass.h"
 #include "Window.h"
-//TODO: Move window to seperate class
 
 // Libs
 #include "luaaa.hpp"
+#include "imgui.h"
+#include <backends/imgui_impl_glfw.h>
+#include <backends/imgui_impl_opengl3.h>
 
 #define HEIGHT 600
 #define WIDTH 800
@@ -68,6 +70,23 @@ namespace RetEngine::Core {
 		Renderer* render = new Renderer();
 		render->RenderInit(WIDTH, HEIGHT);
 
+		// ----------------------------------------
+		// Imgui section -- Todo: move to renderer?
+		//						  make own class?
+		// ----------------------------------------
+		
+		// Setup Dear ImGui context
+		IMGUI_CHECKVERSION();
+		ImGui::CreateContext();
+		ImGuiIO& io = ImGui::GetIO(); (void)io;
+		io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
+		io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
+
+		// Setup Dear ImGui style
+		ImGui::StyleColorsDark();
+		ImGui_ImplGlfw_InitForOpenGL(window->GetWindow(), true);
+		ImGui_ImplOpenGL3_Init("#version 460");
+
 		//Setup Lua
 		global_state = luaL_newstate();
 		luaL_openlibs(global_state);
@@ -82,7 +101,13 @@ namespace RetEngine::Core {
 		render->Render(window->GetWindow());
 
 
+		ImGui_ImplOpenGL3_Shutdown();
+		ImGui_ImplGlfw_Shutdown();
+		ImGui::DestroyContext();
+
+		glfwDestroyWindow(window->GetWindow());
 		glfwTerminate();
+
 		delete render;
 		delete window;
 		return;

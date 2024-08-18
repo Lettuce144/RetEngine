@@ -1,5 +1,8 @@
 #include "Renderer.h"
 #include "Shader.h"
+#include "imgui.h"
+#include <backends/imgui_impl_glfw.h>
+#include <backends/imgui_impl_opengl3.h>
 #include <iostream>
 
 Renderer::Renderer()
@@ -61,6 +64,16 @@ void Renderer::Render(GLFWwindow* window)
 
     while (!glfwWindowShouldClose(window))
     {
+        // Start the Dear ImGui frame
+        ImGui_ImplOpenGL3_NewFrame();
+        ImGui_ImplGlfw_NewFrame();
+        ImGui::NewFrame();
+
+        ImGui::ShowDemoWindow();
+        // Rendering
+        ImGui::Render();
+
+
         //Render code here
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
@@ -68,6 +81,8 @@ void Renderer::Render(GLFWwindow* window)
         shader.use();
         glBindVertexArray(VAO);
         glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
         glfwSwapBuffers(window);
         glfwPollEvents();

@@ -11,10 +11,11 @@ project "Renderer"
    {
       "Source",
       "../thirdparty/glad/include",
-      "../thirdparty/glfw/include"
+      "../thirdparty/glfw/include",
+      "../thirdparty/imgui"
    }
 
-   links { "GLAD", "GLFW"}
+   links { "GLAD", "GLFW", "ImGui"}
 
    targetdir ("../Binaries/" .. OutputDir .. "/%{prj.name}")
    objdir ("../Binaries/Intermediates/" .. OutputDir .. "/%{prj.name}")

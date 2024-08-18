@@ -16,7 +16,7 @@ project "RetEngineCore"
       "../Renderer/Source"
    }
 
-   links { "Renderer" }
+   links { "Renderer", "ImGui", "GLFW"}
 
    linkoptions "../thirdparty/lua/liblua54.a"
 

@@ -3,7 +3,7 @@ project "GLAD"
 	language "C"
 	architecture "x86_64"
 
-	targetdir "../bin/%{cfg.buildcfg}"
+	targetdir "Binaries/%{cfg.buildcfg}"
 	objdir "../obj/%{cfg.buildcfg}"
     
     includedirs { "glad/include/" }

@@ -17,7 +17,7 @@ project "App"
 
    links
    {
-      "RetEngineCore"
+      "RetEngineCore",
    }
 
    targetdir ("../Binaries/" .. OutputDir .. "/%{prj.name}")
