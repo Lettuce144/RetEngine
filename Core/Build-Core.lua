@@ -3,7 +3,6 @@ project "RetEngineCore"
    language "C++"
    cppdialect "C++20"
    targetdir "Binaries/%{cfg.buildcfg}"
-   staticruntime "off"
 
    files { "Source/**.h", "Source/**.cpp" }
 
@@ -13,10 +12,11 @@ project "RetEngineCore"
       "../thirdparty/*",
       "../thirdparty/glad/include",
       "../thirdparty/glfw/include",
+      "../thirdparty/lua",
       "../Renderer/Source"
    }
 
-   links { "Renderer", "ImGui", "GLFW"}
+   links { "Renderer", "ImGui", "GLFW", "Lua"}
 
    targetdir ("../Binaries/" .. OutputDir .. "/%{prj.name}")
    objdir ("../Binaries/Intermediates/" .. OutputDir .. "/%{prj.name}")

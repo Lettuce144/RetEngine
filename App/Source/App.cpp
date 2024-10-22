@@ -1,4 +1,4 @@
-#include "Core/Core.h"
+#include "Core.h"
 
 #define APP_NAME "DemoGLApp"
 

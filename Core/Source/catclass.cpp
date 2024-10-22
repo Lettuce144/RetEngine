@@ -2,9 +2,8 @@
 
 #include "catclass.h"
 
-LuaPrint::LuaPrint(const std::string& name)
+LuaPrint::LuaPrint(const std::string& name) : m_sName(name)
 {
-	m_sName = name;
 }
 
 LuaPrint::~LuaPrint()
