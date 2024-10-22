@@ -18,8 +18,6 @@ project "RetEngineCore"
 
    links { "Renderer", "ImGui", "GLFW"}
 
-   linkoptions "../thirdparty/lua/liblua54.a"
-
    targetdir ("../Binaries/" .. OutputDir .. "/%{prj.name}")
    objdir ("../Binaries/Intermediates/" .. OutputDir .. "/%{prj.name}")
 
