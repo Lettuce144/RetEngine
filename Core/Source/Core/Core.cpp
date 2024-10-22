@@ -13,6 +13,8 @@
 #define HEIGHT 600
 #define WIDTH 800
 
+#define GLFW_DLL
+
 namespace RetEngine::Core {
 
 	lua_State* global_state;

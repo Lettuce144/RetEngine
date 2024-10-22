@@ -1,0 +1,2 @@
+make core a dll/so library or add lua project to fix lua App project error
+(/usr/bin/ld: cannot find -lliblua54.a: Bestand of map bestaat niet)

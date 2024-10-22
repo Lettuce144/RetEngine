@@ -2,5 +2,12 @@
     "files.associations": {
         "*.embeddedhtml": "html",
         "iostream": "cpp"
-    }
+    },
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/home/jens/Documenten/ProjectsLocal/Binaries/linux-x86_64/Debug/App",
+            "binaryPath": "/home/jens/Documenten/ProjectsLocal/Binaries/linux-x86_64/Debug/App/App",
+            "binaryArgs": []
+        }
+    ]
 }

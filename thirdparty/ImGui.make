@@ -42,31 +42,31 @@ define POSTBUILDCMDS
 endef
 
 ifeq ($(config),debug)
-TARGETDIR = Binaries/Debug
+TARGETDIR = ../Binaries/linux-x86_64/Debug/ImGui
 TARGET = $(TARGETDIR)/libImGui.a
-OBJDIR = ../obj/Debug/Debug/ImGui
+OBJDIR = ../Binaries/Intermediates/linux-x86_64/Debug/ImGui
 ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -fPIC -g
 ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -fPIC -g -std=c++20
-LIBS += Binaries/Debug/libGLFW.a
-LDDEPS += Binaries/Debug/libGLFW.a
+LIBS += ../Binaries/linux-x86_64/Debug/GLFW/libGLFW.a
+LDDEPS += ../Binaries/linux-x86_64/Debug/GLFW/libGLFW.a
 
 else ifeq ($(config),release)
-TARGETDIR = Binaries/Release
+TARGETDIR = ../Binaries/linux-x86_64/Release/ImGui
 TARGET = $(TARGETDIR)/libImGui.a
-OBJDIR = ../obj/Release/Release/ImGui
+OBJDIR = ../Binaries/Intermediates/linux-x86_64/Release/ImGui
 ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -O2 -fPIC
 ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -O2 -fPIC -std=c++20
-LIBS += Binaries/Release/libGLFW.a
-LDDEPS += Binaries/Release/libGLFW.a
+LIBS += ../Binaries/linux-x86_64/Release/GLFW/libGLFW.a
+LDDEPS += ../Binaries/linux-x86_64/Release/GLFW/libGLFW.a
 
 else ifeq ($(config),dist)
-TARGETDIR = Binaries/Dist
+TARGETDIR = ../Binaries/linux-x86_64/Dist/ImGui
 TARGET = $(TARGETDIR)/libImGui.a
-OBJDIR = ../obj/Dist/Dist/ImGui
+OBJDIR = ../Binaries/Intermediates/linux-x86_64/Dist/ImGui
 ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -fPIC
 ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -fPIC -std=c++20
-LIBS += Binaries/Dist/libGLFW.a
-LDDEPS += Binaries/Dist/libGLFW.a
+LIBS += ../Binaries/linux-x86_64/Dist/GLFW/libGLFW.a
+LDDEPS += ../Binaries/linux-x86_64/Dist/GLFW/libGLFW.a
 
 endif
 
@@ -85,12 +85,14 @@ GENERATED += $(OBJDIR)/imgui_demo.o
 GENERATED += $(OBJDIR)/imgui_draw.o
 GENERATED += $(OBJDIR)/imgui_impl_glfw.o
 GENERATED += $(OBJDIR)/imgui_impl_opengl3.o
+GENERATED += $(OBJDIR)/imgui_tables.o
 GENERATED += $(OBJDIR)/imgui_widgets.o
 OBJECTS += $(OBJDIR)/imgui.o
 OBJECTS += $(OBJDIR)/imgui_demo.o
 OBJECTS += $(OBJDIR)/imgui_draw.o
 OBJECTS += $(OBJDIR)/imgui_impl_glfw.o
 OBJECTS += $(OBJDIR)/imgui_impl_opengl3.o
+OBJECTS += $(OBJDIR)/imgui_tables.o
 OBJECTS += $(OBJDIR)/imgui_widgets.o
 
 # Rules
@@ -168,6 +170,9 @@ $(OBJDIR)/imgui_demo.o: imgui/imgui_demo.cpp
 	@echo "$(notdir $<)"
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
 $(OBJDIR)/imgui_draw.o: imgui/imgui_draw.cpp
+	@echo "$(notdir $<)"
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/imgui_tables.o: imgui/imgui_tables.cpp
 	@echo "$(notdir $<)"
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
 $(OBJDIR)/imgui_widgets.o: imgui/imgui_widgets.cpp

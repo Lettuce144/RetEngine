@@ -44,23 +44,23 @@ define POSTBUILDCMDS
 endef
 
 ifeq ($(config),debug)
-TARGETDIR = Binaries/Debug
+TARGETDIR = ../Binaries/linux-x86_64/Debug/GLAD
 TARGET = $(TARGETDIR)/libGLAD.a
-OBJDIR = ../obj/Debug/Debug/GLAD
+OBJDIR = ../Binaries/Intermediates/linux-x86_64/Debug/GLAD
 ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -fPIC -g
 ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -fPIC -g
 
 else ifeq ($(config),release)
-TARGETDIR = Binaries/Release
+TARGETDIR = ../Binaries/linux-x86_64/Release/GLAD
 TARGET = $(TARGETDIR)/libGLAD.a
-OBJDIR = ../obj/Release/Release/GLAD
+OBJDIR = ../Binaries/Intermediates/linux-x86_64/Release/GLAD
 ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -O2 -fPIC
 ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -O2 -fPIC
 
 else ifeq ($(config),dist)
-TARGETDIR = Binaries/Dist
+TARGETDIR = ../Binaries/linux-x86_64/Dist/GLAD
 TARGET = $(TARGETDIR)/libGLAD.a
-OBJDIR = ../obj/Dist/Dist/GLAD
+OBJDIR = ../Binaries/Intermediates/linux-x86_64/Dist/GLAD
 ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -fPIC
 ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -fPIC
 

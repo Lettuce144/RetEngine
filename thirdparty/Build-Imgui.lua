@@ -2,8 +2,8 @@ project "ImGui"
 	kind "StaticLib"
 	language "C++"
 
-	targetdir "Binaries/%{cfg.buildcfg}"
-	objdir "../obj/%{cfg.buildcfg}"
+	targetdir ("../Binaries/" .. OutputDir .. "/%{prj.name}")
+	objdir ("../Binaries/Intermediates/" .. OutputDir .. "/%{prj.name}")
 
 	includedirs
 	{
